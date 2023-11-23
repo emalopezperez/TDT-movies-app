@@ -1,0 +1,19 @@
+.container-icon{
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+
+.logo {
+  width: 100%;
+  max-width: 70.4px;
+  height: 28px;
+}
+
+.logo-title{
+  font-size: 19px;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 479px) {
+}
