@@ -1,0 +1,71 @@
+.container-heroes img {
+  width: 100%;
+  height: 100%;
+  max-height: 650px;
+  object-fit: cover;
+  position: relative;
+}
+
+.filter-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, black, transparent);
+}
+
+.container-info {
+  position: absolute;
+  top: 30%;
+  left: 100px;
+  width: 400px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  color: white;
+}
+
+.container-info h2 {
+  font-size: 38px;
+  font-weight: bold;
+  text-wrap: balance;
+}
+
+.container-info p {
+  font-size: 13px;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 21px;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  text-align: justify;
+}
+
+.button {
+  border: 1px solid #ccc;
+  cursor: pointer;
+  padding:  8px 10px;
+}
+
+.play-button {
+  background-color: #66cccc;
+  color: white;
+}
+
+.watch-later-button {
+  background-color: transparent;
+  color: #fff;
+  margin-left: 1em;
+}
+
+@media only screen and (max-width: 479px) {
+  .container-info {
+    width: 100%;
+    left: 4px;
+  }
+}
