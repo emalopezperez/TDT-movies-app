@@ -1,6 +1,6 @@
 ![Imagen del proyecto]()
 
-# Prueba tecnica TDT: Aplicacion de peliculas
+#  Aplicación de películas para la prueba final del bootcamp de la empresa TDT.
 
 ## Tecnologías usadas
 
