@@ -4,7 +4,7 @@
 # Aplicación de películas para la prueba final del bootcamp de la empresa TDT.
 =======
 #  Aplicación de películas para la prueba final del bootcamp de la empresa TDT.
->>>>>>> 762598b014c798b3055c8e0182d575938a8b877b
+
 
 ## Tecnologías usadas
 
