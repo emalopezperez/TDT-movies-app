@@ -1,3 +1,5 @@
+@import "../../../../scss/tools/cut-paragraph";
+
 .container-heroes img {
   width: 100%;
   height: 100%;
@@ -37,13 +39,8 @@
 .container-info p {
   font-size: 13px;
   line-height: 20px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: 21px;
-  display: -webkit-box;
-  -webkit-line-clamp: 6;
-  -webkit-box-orient: vertical;
   text-align: justify;
+  @include cut(6)
 }
 
 .button {

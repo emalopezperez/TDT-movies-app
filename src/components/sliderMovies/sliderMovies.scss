@@ -1,16 +1,17 @@
 .slider-container {
-  margin-top: 20px;
+  margin: 20px 0 20px 0;
   max-width: 1366px;
-  max-height: 250px;
+  max-height: 307px;
   width: 100%;
   height: 100%;
 
   .title-movies {
     padding-bottom: 15px;
   }
-  .prueba {
-    height: 200px;
-    background-color: brown;
+  .card-container {
+    max-width: 244px;
+    height: 307px;
+    width: 100%;
     cursor: pointer;
   }
 }

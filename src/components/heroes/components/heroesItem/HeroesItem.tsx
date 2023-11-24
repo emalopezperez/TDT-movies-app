@@ -3,7 +3,7 @@ import { Movie } from "../../../../models/types";
 
 const HeroesItem = ({ data }: { data: Movie }) => {
   const { poster_path, title, overview } = data;
-
+  
   return (
     <section className="container-heroes">
       <img src={`https://image.tmdb.org/t/p/original/${poster_path}`} alt={title} />

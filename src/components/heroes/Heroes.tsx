@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Movie } from "../../models/types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Fetch } from "../../models/types";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
@@ -6,10 +7,14 @@ import "swiper/css";
 import HeroesItem from "./components/heroesItem/HeroesItem";
 import { FetchData } from "../../services/fetchData";
 
-const Heroes = () => {
-  const [movies, setMovies] = useState([]);
+interface Movies {
+  movies: Movie;
+}
 
-  const handleSuccess = (response ) => {
+const Heroes = () => {
+  const [movies, setMovies] = useState<Movies[]>([]);
+
+  const handleSuccess = (response) => {
     setMovies(response.slice(1, 6));
   };
 

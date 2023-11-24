@@ -1,9 +1,42 @@
-/* eslint-disable react/prop-types */
 import "./sliderMovies.scss";
+import { useEffect, useState } from "react";
+import { Movie, Fetch } from "../../models/types";
+import { FetchData } from "../../services/fetchData";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import CardMovie from "../card-movie/CardMovie";
 
-const SliderMovies = ({ title, url }: { title: string; url: string }) => {
+interface Props {
+  title: string;
+  url: string;
+}
+
+const SliderMovies = ({ title, url }: Props) => {
+  const [movies, setMovies] = useState<Movie[]>([]);
+
+  const handleSuccess = (response) => {
+    setMovies(response.slice(1, 15));
+  };
+
+  const handleError = (error: string) => {
+    console.error(error);
+  };
+
+  const getMovies = () => {
+    const fetchOptions: Fetch = {
+      type: "GET",
+      url: `https://api.themoviedb.org/3/${url}api_key=0137837942ce96a8946a8ccf1ce02b76&language=en-US&page=1`,
+      success: handleSuccess,
+      error: handleError,
+    };
+
+    FetchData.customFetch(fetchOptions);
+  };
+
+  useEffect(() => {
+    getMovies();
+  }, []);
+
   return (
     <div className="slider-container">
       <h3 className="title-movies">{title}</h3>
@@ -29,15 +62,11 @@ const SliderMovies = ({ title, url }: { title: string; url: string }) => {
           },
         }}
         className="mySwiper">
-        <SwiperSlide className="prueba">Slide 1</SwiperSlide>
-        <SwiperSlide className="prueba">Slide 2</SwiperSlide>
-        <SwiperSlide className="prueba">Slide 3</SwiperSlide>
-        <SwiperSlide className="prueba">Slide 4</SwiperSlide>
-        <SwiperSlide className="prueba">Slide 5</SwiperSlide>
-        <SwiperSlide className="prueba">Slide 6</SwiperSlide>
-        <SwiperSlide className="prueba">Slide 7</SwiperSlide>
-        <SwiperSlide className="prueba">Slide 8</SwiperSlide>
-        <SwiperSlide className="prueba">Slide 9</SwiperSlide>
+        {movies.map((movie) => (
+          <SwiperSlide className="card-container">
+            <CardMovie key={movie.id} movie={movie} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

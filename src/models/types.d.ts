@@ -1,11 +1,10 @@
 export interface Fetch {
   type: string;
   url: string;
-  success: (results: Array<any>) => void;
+  success: (results: Array | Object) => void;
   error?: (error: string) => void;
   always?: () => void;
 }
-
 
 interface Movie {
   adult: boolean;
