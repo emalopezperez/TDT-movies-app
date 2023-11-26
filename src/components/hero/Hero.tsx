@@ -4,32 +4,35 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Fetch } from "../../models/types";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
-import HeroesItem from "./components/heroesItem/HeroesItem";
+import HeroItem from "./components/heroItem/HeroItem";
 import { FetchData } from "../../services/fetchData";
 
-interface Movies {
-  movies: Movie;
-}
+const API_URL = `${import.meta.env.VITE_BASE_URL}${
+  import.meta.env.VITE_ENDPOINT_POPULAR
+}api_key=${import.meta.env.VITE_API_KEY}${
+  import.meta.env.VITE_LANGUAGE
+}&page=1`;
 
-const Heroes = () => {
-  const [movies, setMovies] = useState<Movies[]>([]);
+type ListMovies = Movie[];
 
-  const handleSuccess = (response) => {
-    setMovies(response.slice(1, 6));
+const Hero = () => {
+  const [movies, setMovies] = useState<ListMovies>([]);
+
+  const handleSuccess = (response: ListMovies) => {
+    setMovies(response.results.slice(1, 6));
   };
 
-  const handleError = (error: string) => {
-    console.error(error);
+  const handleError = (error: string): void => {
+    console.error(`Error fetching data: ${error}`);
   };
 
   const getMovies = () => {
     const fetchOptions: Fetch = {
       type: "GET",
-      url: "https://api.themoviedb.org/3/movie/popular?api_key=0137837942ce96a8946a8ccf1ce02b76&language=en-US&page=1",
+      url: API_URL,
       success: handleSuccess,
       error: handleError,
     };
-
     FetchData.customFetch(fetchOptions);
   };
 
@@ -53,7 +56,7 @@ const Heroes = () => {
         className="mySwiper">
         {movies.map((movie, key) => (
           <SwiperSlide key={key}>
-            <HeroesItem data={movie} />
+            <HeroItem data={movie} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -61,4 +64,4 @@ const Heroes = () => {
   );
 };
 
-export default Heroes;
+export default Hero;

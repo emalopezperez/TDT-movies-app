@@ -5,26 +5,19 @@ export const FetchData = {
     const options: RequestInit = {
       method: type,
     };
-
     try {
       const response = await fetch(url, options);
-
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
       const responseData = await response.json();
-      success(responseData.results);
+      
+      success?.(responseData);
     } catch (err) {
-      if (error) {
-        error(err.message);
-      } else {
-        console.error("Network error or other error:", err);
-      }
+      error ? error(err.message) : console.error("Network error or other error:", err);
     } finally {
-      if (always) {
-        always();
-      }
+      always?.();
     }
   },
 };

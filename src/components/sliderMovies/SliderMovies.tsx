@@ -2,30 +2,36 @@ import "./sliderMovies.scss";
 import { useEffect, useState } from "react";
 import { Movie, Fetch } from "../../models/types";
 import { FetchData } from "../../services/fetchData";
+import CardMovie from "../card-movie/CardMovie";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import CardMovie from "../card-movie/CardMovie";
 
 interface Props {
   title: string;
-  url: string;
+  endpoint: string;
 }
 
-const SliderMovies = ({ title, url }: Props) => {
-  const [movies, setMovies] = useState<Movie[]>([]);
+type ListMovies = Movie[];
 
-  const handleSuccess = (response) => {
-    setMovies(response.slice(1, 15));
+const SliderMovies: React.FC<Props> = ({ title, endpoint }) => {
+  const API_URL = `${import.meta.env.VITE_BASE_URL}${endpoint}api_key=${
+    import.meta.env.VITE_API_KEY
+  }${import.meta.env.VITE_LANGUAGE}&page=1`;
+
+  const [movies, setMovies] = useState<ListMovies>([]);
+
+  const handleSuccess = (response: ListMovies): void => {
+    setMovies(response.results.slice(1, 20));
   };
 
-  const handleError = (error: string) => {
-    console.error(error);
+  const handleError = (error: string): void => {
+    console.error(`Error fetching data: ${error}`);
   };
 
   const getMovies = () => {
     const fetchOptions: Fetch = {
       type: "GET",
-      url: `https://api.themoviedb.org/3/${url}api_key=0137837942ce96a8946a8ccf1ce02b76&language=en-US&page=1`,
+      url: API_URL,
       success: handleSuccess,
       error: handleError,
     };
@@ -41,15 +47,14 @@ const SliderMovies = ({ title, url }: Props) => {
     <div className="slider-container">
       <h3 className="title-movies">{title}</h3>
       <Swiper
-        slidesPerView={4}
-        spaceBetween={18}
-        grabCursor={true}
+        slidesPerView={1}
+        spaceBetween={10}
         pagination={{
-          clickable: false,
+          clickable: true,
         }}
         breakpoints={{
           640: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 20,
           },
           768: {
@@ -58,13 +63,13 @@ const SliderMovies = ({ title, url }: Props) => {
           },
           1024: {
             slidesPerView: 5,
-            spaceBetween: 50,
+            spaceBetween: 40,
           },
         }}
         className="mySwiper">
         {movies.map((movie) => (
-          <SwiperSlide className="card-container">
-            <CardMovie key={movie.id} movie={movie} />
+          <SwiperSlide key={movie.id} className="card-container ">
+            <CardMovie movie={movie} />
           </SwiperSlide>
         ))}
       </Swiper>

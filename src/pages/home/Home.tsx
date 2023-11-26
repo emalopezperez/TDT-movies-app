@@ -1,15 +1,14 @@
 import "./home.scss";
-import Heroes from "../../components/heroes/Heroes";
+import Hero from "../../components/hero/Hero";
 import SliderMovies from "../../components/sliderMovies/SliderMovies";
 
 const Home = () => {
   return (
     <>
-      <Heroes />
+      <Hero />
       <main className="container-home">
-        <SliderMovies title="Comedia" url="movie/upcoming?" />
-
-        <SliderMovies title="Populares" url="movie/top_rated?" />
+        <SliderMovies title="Comedia" endpoint="movie/upcoming?" />
+        <SliderMovies title="Populares" endpoint="movie/top_rated?" />
       </main>
     </>
   );
