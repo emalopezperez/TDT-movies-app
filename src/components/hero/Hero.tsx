@@ -6,6 +6,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import HeroItem from "./components/heroItem/HeroItem";
 import { FetchData } from "../../services/fetchData";
+import Spinner from "../spinner/Spinner";
 
 const API_URL = `${import.meta.env.VITE_BASE_URL}${
   import.meta.env.VITE_ENDPOINT_POPULAR
@@ -17,6 +18,7 @@ type ListMovies = Movie[];
 
 const Hero = () => {
   const [movies, setMovies] = useState<ListMovies>([]);
+  const [spinner, setSpinner] = useState(true);
 
   const handleSuccess = (response: ListMovies) => {
     setMovies(response.results.slice(1, 6));
@@ -25,6 +27,9 @@ const Hero = () => {
   const handleError = (error: string): void => {
     console.error(`Error fetching data: ${error}`);
   };
+  const handleAlways = () => {
+    setSpinner(false);
+  };
 
   const getMovies = () => {
     const fetchOptions: Fetch = {
@@ -32,6 +37,7 @@ const Hero = () => {
       url: API_URL,
       success: handleSuccess,
       error: handleError,
+      always: handleAlways,
     };
     FetchData.customFetch(fetchOptions);
   };
@@ -42,6 +48,7 @@ const Hero = () => {
 
   return (
     <header className="container-heroes">
+      <Spinner spinner={spinner} />
       <Swiper
         spaceBetween={0}
         centeredSlides={true}

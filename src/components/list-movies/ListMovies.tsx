@@ -1,5 +1,6 @@
 import "./listMovies.scss";
 import { Movie } from "../../models/types";
+import CardMovie from "../card-movie/CardMovie";
 
 interface Props {
   data: Movie;
@@ -10,7 +11,7 @@ const ListMovies: React.FC<Props> = ({ data }) => {
     <section className="list-movies">
       {data.map((movie) => (
         <div key={movie.id} className="">
-          {movie.title}
+          <CardMovie movie={movie} />
         </div>
       ))}
     </section>

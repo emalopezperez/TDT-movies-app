@@ -8,13 +8,13 @@ $_background-gradien: linear-gradient(to right, black, transparent);
   max-width: 244px;
   height: 100%;
   width: 100%;
+  position: relative;
 
   img {
     width: 100%;
     height: 100%;
     border-radius: 25px;
     object-fit: cover;
-    position: relative;
     transition: transform 0.3s ease-in-out;
   }
 

@@ -3,7 +3,7 @@ export interface Fetch {
   url: string;
   success: (results: Array | Object) => void;
   error?: (error: string) => void;
-  always?: () => void;
+  always?: (error: string) => void;
 }
 
 interface Movie {

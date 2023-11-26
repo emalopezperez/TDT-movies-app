@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Movie, Fetch } from "../../models/types";
 import { FetchData } from "../../services/fetchData";
 import CardMovie from "../card-movie/CardMovie";
+import Spinner from "../spinner/Spinner";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
@@ -19,6 +20,7 @@ const SliderMovies: React.FC<Props> = ({ title, endpoint }) => {
   }${import.meta.env.VITE_LANGUAGE}&page=1`;
 
   const [movies, setMovies] = useState<ListMovies>([]);
+  const [spinner, setSpinner] = useState(true);
 
   const handleSuccess = (response: ListMovies): void => {
     setMovies(response.results.slice(1, 20));
@@ -28,12 +30,17 @@ const SliderMovies: React.FC<Props> = ({ title, endpoint }) => {
     console.error(`Error fetching data: ${error}`);
   };
 
+  const handleAlways = () => {
+    setSpinner(false);
+  };
+
   const getMovies = () => {
     const fetchOptions: Fetch = {
       type: "GET",
       url: API_URL,
       success: handleSuccess,
       error: handleError,
+      always: handleAlways,
     };
 
     FetchData.customFetch(fetchOptions);
@@ -45,6 +52,7 @@ const SliderMovies: React.FC<Props> = ({ title, endpoint }) => {
 
   return (
     <div className="slider-container">
+      <Spinner spinner={spinner} />
       <h3 className="title-movies">{title}</h3>
       <Swiper
         slidesPerView={1}
