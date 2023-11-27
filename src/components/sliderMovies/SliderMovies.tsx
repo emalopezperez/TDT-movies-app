@@ -14,6 +14,10 @@ interface Props {
 
 type ListMovies = Movie[];
 
+interface ApiResponse {
+  results: Movie[];
+}
+
 const SliderMovies: React.FC<Props> = ({ title, endpoint }) => {
   const API_URL = `${import.meta.env.VITE_BASE_URL}${endpoint}api_key=${
     import.meta.env.VITE_API_KEY
@@ -22,8 +26,10 @@ const SliderMovies: React.FC<Props> = ({ title, endpoint }) => {
   const [movies, setMovies] = useState<ListMovies>([]);
   const [spinner, setSpinner] = useState(true);
 
-  const handleSuccess = (response: ListMovies): void => {
-    setMovies(response.results.slice(1, 20));
+  const handleSuccess = (response: ApiResponse) => {
+    const { results } = response;
+
+    setMovies(results.slice(1, 20));
   };
 
   const handleError = (error: string): void => {
@@ -55,6 +61,7 @@ const SliderMovies: React.FC<Props> = ({ title, endpoint }) => {
       <Spinner spinner={spinner} />
       <h3 className="title-movies">{title}</h3>
       <Swiper
+        loop={true}
         slidesPerView={1}
         spaceBetween={10}
         pagination={{

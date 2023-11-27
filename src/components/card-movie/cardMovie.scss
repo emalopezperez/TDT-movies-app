@@ -1,7 +1,12 @@
 @import "../../scss/tools/cut-paragraph";
 $_text-color: white;
 $_text-size: 16px;
-$_background-gradien: linear-gradient(to right, black, transparent);
+$_background-gradien: linear-gradient(to right, rgb(66, 66, 66), transparent);
+$_background-gradien-hover: linear-gradient(
+  to right,
+  rgb(128, 127, 127),
+  transparent
+);
 
 .card {
   max-width: 244px;
@@ -26,6 +31,10 @@ $_background-gradien: linear-gradient(to right, black, transparent);
     border-radius: 25px;
     background: $_background-gradien;
     transition: transform 0.3s ease-in-out;
+  }
+
+  .card-filter:hover {
+    background: $_background-gradien-hover;
   }
 
   .card-info {

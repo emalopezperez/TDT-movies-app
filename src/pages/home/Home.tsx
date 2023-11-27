@@ -7,8 +7,9 @@ const Home = () => {
     <>
       <Hero />
       <main className="container-home">
+        <SliderMovies title="Lo más popular " endpoint="movie/popular?" />
         <SliderMovies title="Comedia" endpoint="movie/upcoming?" />
-        <SliderMovies title="Populares" endpoint="movie/top_rated?" />
+        <SliderMovies title="lo más valorados" endpoint="movie/top_rated?" />
       </main>
     </>
   );

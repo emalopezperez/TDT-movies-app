@@ -15,7 +15,7 @@ export const FetchData = {
       
       success?.(responseData);
     } catch (err) {
-      error ? error(err.message) : console.error("Network error or other error:", err);
+      error &&  console.error("Network error or other error:", err);
     } finally {
       if (always) {
         always();

@@ -7,7 +7,7 @@ interface Props {
 }
 
 const Detail: React.FC<Props> = ({ data }) => {
-  const { id, overview, poster_path, title } = data;
+  const { overview, poster_path, title } = data;
 
   return (
     <article className="detail">

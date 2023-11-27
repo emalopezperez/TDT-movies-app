@@ -1,11 +1,11 @@
-import "./sidebarMenu.scss"
+import "./sidebarMenu.scss";
 
 const SidebarMenu = () => {
   return (
     <aside className="sidebar-container">
-      aside
+      <p>hola</p>
     </aside>
-  )
-}
+  );
+};
 
-export default SidebarMenu
+export default SidebarMenu;

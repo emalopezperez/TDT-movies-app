@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./nav.scss";
 import Logo from "./components/logo/Logo";
 import Menu from "./components/menu/Menu";
@@ -10,6 +10,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const Nav = () => {
   const [toggleMenu, setToggleMenu] = useState<boolean>(false);
+  const [scrolled, setScrolled] = useState<boolean>(false);
 
   const openSidebarMenu = () => {
     setToggleMenu(true);
@@ -19,8 +20,20 @@ const Nav = () => {
     setToggleMenu(false);
   };
 
+  const handleScroll = () => {
+    const isScrolled = window.scrollY > 0;
+    setScrolled(isScrolled);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="container ">
+    <header className={`container ${scrolled ? "scrolled" : ""}`}>
       <nav className="container-nav">
         <div className="container-navigation">
           <Logo />

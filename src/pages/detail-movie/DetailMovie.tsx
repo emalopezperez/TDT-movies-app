@@ -13,7 +13,13 @@ const DetailMovie = () => {
   const API_URL = `${import.meta.env.VITE_BASE_URL}movie/
     ${id}?api_key=${import.meta.env.VITE_API_KEY}`;
 
-  const [movie, setMovie] = useState({});
+  const [movie, setMovie] = useState<Movie>(() => ({
+    id: 0,
+    overview: "",
+    poster_path: "",
+    title: "",
+  }));
+
   const [spinner, setSpinner] = useState(true);
 
   const handleSuccess = (response: Movie) => {

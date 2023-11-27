@@ -3,7 +3,6 @@ import { Movie } from "../../models/types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Fetch } from "../../models/types";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import "swiper/css";
 import HeroItem from "./components/heroItem/HeroItem";
 import { FetchData } from "../../services/fetchData";
 import Spinner from "../spinner/Spinner";
@@ -16,12 +15,18 @@ const API_URL = `${import.meta.env.VITE_BASE_URL}${
 
 type ListMovies = Movie[];
 
+interface ApiResponse {
+  results: Movie[];
+}
+
 const Hero = () => {
   const [movies, setMovies] = useState<ListMovies>([]);
   const [spinner, setSpinner] = useState(true);
 
-  const handleSuccess = (response: ListMovies) => {
-    setMovies(response.results.slice(1, 6));
+  const handleSuccess = (response: ApiResponse) => {
+    const { results } = response;
+
+    setMovies(results.slice(1, 6));
   };
 
   const handleError = (error: string): void => {
@@ -47,7 +52,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <header className="container-heroes">
+    <header>
       <Spinner spinner={spinner} />
       <Swiper
         spaceBetween={0}

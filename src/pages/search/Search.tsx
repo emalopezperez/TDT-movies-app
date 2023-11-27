@@ -10,6 +10,10 @@ import { motion } from "framer-motion";
 
 type ListMovies = Movie[];
 
+interface ApiResponse {
+  results: Movie[];
+}
+
 const Search = () => {
   const { query } = useParams();
 
@@ -20,8 +24,10 @@ const Search = () => {
   const [listMovies, setListMovies] = useState<ListMovies>([]);
   const [spinner, setSpinner] = useState(true);
 
-  const handleSuccess = (response: ListMovies) => {
-    setListMovies(response.results);
+  const handleSuccess = (response: ApiResponse) => {
+    const { results } = response;
+
+    setListMovies(results);
   };
 
   const handleError = (error: string): void => {
