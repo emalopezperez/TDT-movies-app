@@ -11,7 +11,6 @@ const Search = () => {
 
   const handleSearch = () => {
     if (search.length <= 0) {
-      console.log("Mandando mensajes vacio");
       return;
     }
     navigate(`/search/${search}`);

@@ -1,6 +1,7 @@
 import "./cardMovie.scss";
 import { Link } from "react-router-dom";
 import { Movie } from "../../models/types";
+import { imgDefault } from "../../consts/imageDefault";
 
 interface CardMovieProps {
   movie: Movie;
@@ -11,7 +12,14 @@ const CardMovie: React.FC<CardMovieProps> = ({ movie }) => {
 
   return (
     <Link to={`/detail-movie/${id}`} className="card ">
-      <img src={`${import.meta.env.VITE_PATH_IMG}${poster_path}`} alt={title} />
+      <img
+        src={
+          poster_path !== null
+            ? `${import.meta.env.VITE_PATH_IMG}${poster_path}`
+            : imgDefault
+        }
+        alt={title}
+      />
       <div className="card-filter"></div>
       <div className="card-info">
         <h3>{title}</h3>

@@ -5,6 +5,7 @@ import "./detailMovie.scss";
 import Detail from "../../components/detailMovie/Detail";
 import Spinner from "../../components/spinner/Spinner";
 import { Fetch, Movie } from "../../models/types";
+import { motion } from "framer-motion";
 
 const DetailMovie = () => {
   const { id } = useParams();
@@ -24,7 +25,9 @@ const DetailMovie = () => {
   };
 
   const handleAlways = () => {
-    setSpinner(false);
+    setTimeout(() => {
+      setSpinner(false);
+    }, 40);
   };
 
   const getMovie = () => {
@@ -43,9 +46,15 @@ const DetailMovie = () => {
   }, []);
 
   return (
-    <main className="container-detail">
+    <main>
       <Spinner spinner={spinner} />
-      <Detail data={movie} />
+      <motion.div
+        className="container-detail"
+        initial={{ x: -80 }}
+        animate={{ x: 0 }}
+        transition={{ ease: "easeOut", duration: 0.7 }}>
+        <Detail data={movie} />
+      </motion.div>
     </main>
   );
 };
