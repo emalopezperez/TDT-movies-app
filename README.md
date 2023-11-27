@@ -3,8 +3,6 @@
 <<<<<<< HEAD
 # Aplicación de películas para la prueba final del bootcamp de la empresa TDT.
 =======
-#  Aplicación de películas para la prueba final del bootcamp de la empresa TDT.
-
 
 ## Tecnologías usadas
 
