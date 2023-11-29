@@ -1,6 +1,17 @@
-import React, { useState, FormEvent, ChangeEvent } from "react";
 import "../auth.scss";
+import { useState, ChangeEvent } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { createUser } from "../../../redux/states/user";
+import { FetchData } from "../../../services/fetchData";
 import FormInputs from "../../../components/form/formInputs/FormInputs";
+import Spinner from "../../../components/spinner/Spinner";
+import { Fetch } from "../../../models/types";
+import { ApiResponse } from "../../../models/users";
+
+const API_URL = `${import.meta.env.VITE_BASE_URL_AUTH}${
+  import.meta.env.VITE_ENDPINT_LOGIN
+}`;
 
 interface Values {
   email: string;
@@ -9,6 +20,10 @@ interface Values {
 }
 
 const Login: React.FC = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [spinner, setSpinner] = useState(false);
   const [values, setValues] = useState<Values>({
     email: "",
     password: "",
@@ -47,9 +62,33 @@ const Login: React.FC = () => {
     },
   ];
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSuccess = (response: ApiResponse) => {
+    setSpinner(true);
+
+    dispatch(createUser(response));
+    navigate("/");
+  };
+
+  const handleError = (error: string): void => {
+    console.error(`Error fetching data: ${error}`);
+  };
+
+  const handleAlways = () => {
+    setSpinner(false);
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(values);
+
+    const fetchOptions: Fetch = {
+      type: "POST",
+      url: API_URL,
+      success: handleSuccess,
+      error: handleError,
+      always: handleAlways,
+      body: values,
+    };
+    await FetchData.customFetch(fetchOptions);
   };
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -58,6 +97,7 @@ const Login: React.FC = () => {
 
   return (
     <div className="container-form">
+      <Spinner spinner={spinner} />
       <form onSubmit={handleSubmit}>
         <h4>Inicias sesion</h4>
         {inputs.map((input) => (

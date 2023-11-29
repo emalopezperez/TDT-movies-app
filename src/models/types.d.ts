@@ -4,6 +4,7 @@ export interface Fetch {
   success: (results: Array | Object) => void;
   error?: (error: string) => void;
   always?: () => void;
+  body?: Object;
 }
 
 interface Movie {
