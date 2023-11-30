@@ -2,6 +2,7 @@ import "./search.scss";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FetchData } from "../../services/fetchData";
+import Nav from "../../components/nav/Nav";
 import { Movie, Fetch } from "../../models/types";
 import ListMovies from "../../components/list-movies/ListMovies";
 import Spinner from "../../components/spinner/Spinner";
@@ -57,7 +58,8 @@ const Search = () => {
   }, [query]);
 
   return (
-    <section>
+    <>
+      <Nav />
       <Spinner spinner={spinner} />
       {listMovies.length == 0 ? (
         <Menssage menssage={`No esta disponible`} />
@@ -71,7 +73,7 @@ const Search = () => {
           </motion.div>
         </div>
       )}
-    </section>
+    </>
   );
 };
 

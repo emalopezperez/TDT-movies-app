@@ -24,6 +24,8 @@ export const FetchData = {
       success?.(responseData);
     } catch (err) {
       error && console.error("Network error or other error:", err);
+
+      error?.("Error al registrar usuario");
     } finally {
       if (always) {
         always();

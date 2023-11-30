@@ -1,6 +1,6 @@
 import "../auth.scss";
 import { useState, ChangeEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../../redux/states/user";
 import { FetchData } from "../../../services/fetchData";
@@ -111,6 +111,11 @@ const Login: React.FC = () => {
         <button className="button-submit" type="submit">
           Iniciar sesion
         </button>
+
+        <Link to="/auth/register">
+          <span>Tienes cuenta ?</span>
+          <button>Retgistrarse</button>
+        </Link>
       </form>
     </div>
   );

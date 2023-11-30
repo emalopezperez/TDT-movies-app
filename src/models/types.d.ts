@@ -23,3 +23,10 @@ interface Movie {
   vote_average?: number;
   vote_count?: number;
 }
+
+
+interface Notify {
+  menssage: string,
+    status: boolean,
+    success: boolean,
+}

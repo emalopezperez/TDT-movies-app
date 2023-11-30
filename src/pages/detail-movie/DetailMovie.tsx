@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FetchData } from "../../services/fetchData";
 import "./detailMovie.scss";
+import Nav from "../../components/nav/Nav";
 import Detail from "../../components/detailMovie/Detail";
 import Spinner from "../../components/spinner/Spinner";
 import { Fetch, Movie } from "../../models/types";
@@ -52,7 +53,8 @@ const DetailMovie = () => {
   }, []);
 
   return (
-    <main>
+    <>
+      <Nav />
       <Spinner spinner={spinner} />
       <motion.div
         className="container-detail"
@@ -61,7 +63,7 @@ const DetailMovie = () => {
         transition={{ ease: "easeOut", duration: 0.7 }}>
         <Detail data={movie} />
       </motion.div>
-    </main>
+    </>
   );
 };
 
