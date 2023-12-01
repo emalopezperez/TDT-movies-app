@@ -16,7 +16,6 @@ const API_URL = `${import.meta.env.VITE_BASE_URL_AUTH}${
 interface Values {
   email: string;
   password: string;
-  confirmPassword: string;
 }
 
 const Login: React.FC = () => {
@@ -27,7 +26,6 @@ const Login: React.FC = () => {
   const [values, setValues] = useState<Values>({
     email: "",
     password: "",
-    confirmPassword: "",
   });
 
   const inputs = [
