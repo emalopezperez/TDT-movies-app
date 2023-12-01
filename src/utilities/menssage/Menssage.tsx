@@ -6,9 +6,11 @@ interface Menssage {
 
 const Menssage: React.FC<Menssage> = ({ menssage }) => {
   return (
-    <div className="container-error">
-      <h4>{menssage}</h4>
-    </div>
+    <>
+      <div className="container-error">
+        <h4>{menssage}</h4>
+      </div>
+    </>
   );
 };
 

@@ -25,6 +25,7 @@ const FormInputs: React.FC<FormInputsProps> = ({
 
   const handleFocus = () => {
     setFocused(true);
+    console.log(focused);
   };
 
   return (
@@ -37,7 +38,6 @@ const FormInputs: React.FC<FormInputsProps> = ({
         onFocus={() =>
           inputProps.name === "confirmPassword" && setFocused(true)
         }
-        focused={focused.toString()}
       />
       <span>{errorMessage}</span>
     </div>

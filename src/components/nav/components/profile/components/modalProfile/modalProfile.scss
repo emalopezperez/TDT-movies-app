@@ -11,7 +11,8 @@
   color: black;
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: space-between;
+  padding: 10px;
 
   .logout {
     width: 100%;
@@ -19,7 +20,7 @@
     cursor: pointer;
     padding: 8px;
     color: white;
-    border-radius: 6px;
+    border-radius: 15px;
   }
 }
 

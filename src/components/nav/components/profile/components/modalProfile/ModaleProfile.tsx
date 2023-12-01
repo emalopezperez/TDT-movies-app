@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { AppStore } from "../../../../../../redux/store";
 import { useDispatch } from "react-redux";
 import { logout } from "../../../../../../redux/states/user";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 interface Props {
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -23,7 +23,11 @@ const ModalProfile: React.FC<Props> = ({ setOpenModal }) => {
 
   return (
     <div className="container-modal">
-      <h4>{userInfo.email}</h4>
+      <div>
+        <h4>{userInfo.email}</h4>
+        <Link to="/user-profile"> Mi perfil</Link>
+      </div>
+
       <button onClick={handleLogout} className="logout">
         Cerrar sesión
       </button>

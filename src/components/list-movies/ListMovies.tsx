@@ -10,9 +10,7 @@ const ListMovies: React.FC<Props> = ({ data }) => {
   return (
     <main className="list-movies">
       {data.map((movie) => (
-        <div key={movie.id} className="">
-          <CardMovie movie={movie} />
-        </div>
+        <CardMovie movie={movie} key={movie.id} />
       ))}
     </main>
   );

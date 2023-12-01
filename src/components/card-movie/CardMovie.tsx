@@ -19,11 +19,19 @@ const CardMovie: React.FC<CardMovieProps> = ({ movie }) => {
             : imgDefault
         }
         alt={title}
+        className="absolute"
       />
-      <div className="card-filter"></div>
+      <div className="card-filter absolute"></div>
+      <div className="span-number">
+        <span>9.2</span>
+      </div>
+
       <div className="card-info">
         <h3>{title}</h3>
-        <p>{overview}</p>
+        <div>
+          <p>{overview}</p>
+          <button className="button-like">+</button>
+        </div>
       </div>
     </Link>
   );

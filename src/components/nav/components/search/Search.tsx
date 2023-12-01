@@ -2,7 +2,7 @@ import "./search.scss";
 import { useNavigate } from "react-router-dom";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { useState } from "react";
-import { ChangeEvent } from "react";
+import { ChangeEvent, KeyboardEvent } from "react";
 
 const Search = () => {
   const navigate = useNavigate();
@@ -22,6 +22,12 @@ const Search = () => {
     setSearch(inputValue);
   };
 
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   return (
     <div className=" container-search">
       <input
@@ -32,6 +38,7 @@ const Search = () => {
         type="search"
         value={search}
         onChange={handleChange}
+        onKeyDown={handleKeyDown}
       />
       <button onClick={handleSearch} className="search-icon">
         <MagnifyingGlassIcon className="icon" />
