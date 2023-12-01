@@ -9,7 +9,7 @@ import Spinner from "../../../components/spinner/Spinner";
 import { Fetch } from "../../../models/types";
 import { ApiResponse } from "../../../models/users";
 
-const API_URL = `${import.meta.env.VITE_BASE_URL_AUTH}login`;
+const API_URL = "https://api-movies-tdt.vercel.app/api/auth/login";
 
 interface Values {
   email: string;
