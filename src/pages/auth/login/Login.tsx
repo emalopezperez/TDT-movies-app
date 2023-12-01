@@ -9,9 +9,7 @@ import Spinner from "../../../components/spinner/Spinner";
 import { Fetch } from "../../../models/types";
 import { ApiResponse } from "../../../models/users";
 
-const API_URL = `${import.meta.env.VITE_BASE_URL_AUTH}${
-  import.meta.env.VITE_ENDPINT_LOGIN
-}`;
+const API_URL = `${import.meta.env.VITE_BASE_URL_AUTH}login`;
 
 interface Values {
   email: string;
