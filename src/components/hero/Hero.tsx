@@ -11,7 +11,7 @@ const API_URL = `${import.meta.env.VITE_BASE_URL}${
   import.meta.env.VITE_ENDPOINT_POPULAR
 }api_key=${import.meta.env.VITE_API_KEY}${
   import.meta.env.VITE_LANGUAGE
-}&page=3`;
+}&page=1`;
 
 type ListMovies = Movie[];
 

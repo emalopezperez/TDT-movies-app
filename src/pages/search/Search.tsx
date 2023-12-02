@@ -92,14 +92,14 @@ const Search = () => {
             className="list-movies">
             <ListMovies data={listMovies} />
           </motion.div>
-
-          <Pagination
-            handlePageChange={handlePageChange}
-            page={page}
-            totalPages={totalPages}
-          />
         </div>
       )}
+
+      <Pagination
+        handlePageChange={handlePageChange}
+        page={page}
+        totalPages={totalPages}
+      />
     </>
   );
 };

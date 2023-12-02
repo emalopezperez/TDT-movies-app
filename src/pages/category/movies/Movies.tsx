@@ -60,12 +60,6 @@ const Movies = () => {
     FetchData.customFetch(fetchOptions);
   };
 
-  const handlePageChange = (newPage: number): void => {
-    if (newPage >= 1 && newPage <= totalPages) {
-      setPage(newPage);
-    }
-  };
-
   useEffect(() => {
     getMovies();
     setSpinner(true);
@@ -89,12 +83,7 @@ const Movies = () => {
         />
 
         <div className="list-movies">
-          <ListMovies
-            data={filtered}
-            handlePageChange={handlePageChange}
-            page={page}
-            totalPages={totalPages}
-          />
+          <ListMovies data={filtered} />
         </div>
       </div>
     </>

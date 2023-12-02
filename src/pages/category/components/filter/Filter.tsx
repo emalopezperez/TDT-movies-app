@@ -4,9 +4,9 @@ import { Movie } from "../../../../models/types";
 
 interface Props {
   listMovies: Movie[];
-  setFiltered: React.Dispatch<React.SetStateAction<Movie>>;
+  setFiltered: (listMovies: Movie[]) => void;
   genre: number;
-  setGenre: React.Dispatch<React.SetStateAction<number>>;
+  setGenre: (genre: number) => void;
 }
 
 const Filter: React.FC<Props> = ({
@@ -21,8 +21,8 @@ const Filter: React.FC<Props> = ({
       return;
     }
 
-    const filter = listMovies.filter((movie) =>
-      movie.genre_ids.includes(genre)
+    const filter = listMovies.filter(({ genre_ids }) =>
+      genre_ids?.includes(genre)
     );
 
     setFiltered(filter);
