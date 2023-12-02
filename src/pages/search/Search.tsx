@@ -13,20 +13,28 @@ type ListMovies = Movie[];
 
 interface ApiResponse {
   results: Movie[];
+  total_pages: number;
 }
 
 const Search = () => {
   const { query } = useParams();
 
-  const API_URL = `${import.meta.env.VITE_BASE_URL}${
-    import.meta.env.VITE_ENDPOINT_SEARCH
-  }${query}&api_key=${import.meta.env.VITE_API_KEY}`;
-
   const [listMovies, setListMovies] = useState<ListMovies>([]);
   const [spinner, setSpinner] = useState(true);
 
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+
+  const API_URL = `${import.meta.env.VITE_BASE_URL}${
+    import.meta.env.VITE_ENDPOINT_SEARCH
+  }${query}&api_key=${
+    import.meta.env.VITE_API_KEY
+  }&language=es-ES&page=${page}`;
+
   const handleSuccess = (response: ApiResponse) => {
     const { results } = response;
+
+    setTotalPages(response.total_pages);
 
     setListMovies(results);
   };
@@ -52,10 +60,16 @@ const Search = () => {
     FetchData.customFetch(fetchOptions);
   };
 
+  const handlePageChange = (newPage: number) => {
+    if (newPage >= 1 && newPage <= totalPages) {
+      setPage(newPage);
+    }
+  };
+
   useEffect(() => {
     getMovies();
     setSpinner(true);
-  }, [query]);
+  }, [query, page]);
 
   return (
     <>
@@ -69,7 +83,12 @@ const Search = () => {
             animate={{ y: 40 }}
             transition={{ ease: "easeOut", duration: 0.8 }}
             className="list-movies">
-            <ListMovies data={listMovies} />
+            <ListMovies
+              data={listMovies}
+              handlePageChange={handlePageChange}
+              page={page}
+              totalPages={totalPages}
+            />
           </motion.div>
         </div>
       )}

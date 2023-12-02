@@ -12,9 +12,7 @@ interface Values {
   nombre: string;
 }
 
-const API_URL = `${import.meta.env.VITE_BASE_URL_AUTH}${
-  import.meta.env.VITE_ENDPINT_REGISTER
-}`;
+const API_URL = "https://api-movies-tdt.vercel.app/api/auth/signup";
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
