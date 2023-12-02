@@ -1,14 +1,11 @@
-import "./search.scss";
+import "./movies.scss";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { FetchData } from "../../services/fetchData";
-import Nav from "../../components/nav/Nav";
-import { Movie, Fetch } from "../../models/types";
-import ListMovies from "../../components/list-movies/ListMovies";
-import Pagination from "../../components/pagination/Pagination";
-import Spinner from "../../components/spinner/Spinner";
-import Menssage from "../../utilities/menssage/Menssage";
-import { motion } from "framer-motion";
+import { FetchData } from "../../../services/fetchData";
+import Nav from "../../../components/nav/Nav";
+import { Movie, Fetch } from "../../../models/types";
+import ListMovies from "../../../components/list-movies/ListMovies";
+import Filter from "../components/filter/Filter";
+import Spinner from "../../../components/spinner/Spinner";
 
 type ListMovies = Movie[];
 
@@ -17,20 +14,21 @@ interface ApiResponse {
   total_pages: number;
 }
 
-const Search = () => {
-  const { query } = useParams();
-
+const Movies = () => {
   const [listMovies, setListMovies] = useState<ListMovies>([]);
+  const [filtered, setFiltered] = useState<ListMovies>([]);
+  const [genre, setGenre] = useState<number>(0);
+
   const [spinner, setSpinner] = useState(true);
 
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
+  const [page, setPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number>(0);
 
   const API_URL = `${import.meta.env.VITE_BASE_URL}${
-    import.meta.env.VITE_ENDPOINT_SEARCH
-  }${query}&api_key=${
-    import.meta.env.VITE_API_KEY
-  }&language=es-ES&page=${page}`;
+    import.meta.env.VITE_ENDPOINT_POPULAR
+  }api_key=${import.meta.env.VITE_API_KEY}${
+    import.meta.env.VITE_LANGUAGE
+  }&page=${page}`;
 
   const handleSuccess = (response: ApiResponse) => {
     const { results } = response;
@@ -38,6 +36,7 @@ const Search = () => {
     setTotalPages(response.total_pages);
 
     setListMovies(results);
+    setFiltered(results);
   };
 
   const handleError = (error: string): void => {
@@ -61,7 +60,7 @@ const Search = () => {
     FetchData.customFetch(fetchOptions);
   };
 
-  const handlePageChange = (newPage: number) => {
+  const handlePageChange = (newPage: number): void => {
     if (newPage >= 1 && newPage <= totalPages) {
       setPage(newPage);
     }
@@ -70,38 +69,36 @@ const Search = () => {
   useEffect(() => {
     getMovies();
     setSpinner(true);
-
     window.scrollTo(0, 0);
-  }, [query, page]);
+  }, [page]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [page, query]);
+  }, []);
 
   return (
     <>
       <Nav />
       <Spinner spinner={spinner} />
-      {listMovies.length == 0 ? (
-        <Menssage menssage={`No esta disponible`} />
-      ) : (
-        <div className="list-movies-search">
-          <motion.div
-            animate={{ y: 40 }}
-            transition={{ ease: "easeOut", duration: 0.8 }}
-            className="list-movies">
-            <ListMovies data={listMovies} />
-          </motion.div>
+      <div className="movies">
+        <Filter
+          listMovies={listMovies}
+          setFiltered={setFiltered}
+          genre={genre}
+          setGenre={setGenre}
+        />
 
-          <Pagination
+        <div className="list-movies">
+          <ListMovies
+            data={filtered}
             handlePageChange={handlePageChange}
             page={page}
             totalPages={totalPages}
           />
         </div>
-      )}
+      </div>
     </>
   );
 };
 
-export default Search;
+export default Movies;

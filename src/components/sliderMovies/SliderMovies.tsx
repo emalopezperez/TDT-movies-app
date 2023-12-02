@@ -27,6 +27,7 @@ const SliderMovies: React.FC<Props> = ({ title, endpoint }) => {
   const [spinner, setSpinner] = useState(true);
 
   const handleSuccess = (response: ApiResponse) => {
+    console.log(response);
     const { results } = response;
 
     setMovies(results.slice(1, 20));

@@ -16,7 +16,6 @@ $_bg-btn: #66cccc;
   max-height: 307px;
   position: relative;
   border-radius: 25px;
-  background-color: white;
 
   .absolute {
     height: 99%;
@@ -109,4 +108,8 @@ $_bg-btn: #66cccc;
       }
     }
   }
+}
+
+.bg-white {
+  background-color: white;
 }

@@ -8,6 +8,7 @@ import Search from "./pages/search/Search";
 import Menssage from "./utilities/menssage/Menssage";
 import Register from "./pages/auth/rigister/Register";
 import Profile from "./pages/profile/Profile";
+import Movies from "./pages/category/movies/Movies";
 import AuthGuards from "./guards/authGuards";
 
 import { Suspense } from "react";
@@ -21,6 +22,7 @@ function App() {
             <Route element={<AuthGuards />}>
               <Route path="/" element={<Home />} />
               <Route path="/detail-movie/:id" element={<DetailMovie />} />
+              <Route path="/category/movies" element={<Movies />} />
               <Route path="/user-profile" element={<Profile />} />
               <Route path="/search/:query" element={<Search />} />
             </Route>

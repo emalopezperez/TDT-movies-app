@@ -52,6 +52,10 @@ const DetailMovie = () => {
     getMovie();
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <Nav />

@@ -1,0 +1,20 @@
+.pagination {
+  margin-top: 640px;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 90px;
+  button {
+    padding: 10px;
+    background-color: #66cccc;
+    border: 1px solid white;
+    cursor: pointer;
+    color: white;
+  }
+
+  span {
+    color: white;
+  }
+}

@@ -8,9 +8,9 @@ interface MenuItem {
 }
 
 const navigation: MenuItem[] = [
-  { name: "Inicio", href: "/home", current: true },
+  { name: "Inicio", href: "/", current: true },
   { name: "Series", href: "/contact", current: false },
-  { name: "Peliculas", href: "/ss", current: false },
+  { name: "Peliculas", href: "/category/movies", current: false },
   { name: "Novedades", href: "/s", current: false },
 ];
 

@@ -7,7 +7,7 @@ const Logo = () => {
       <div className="container-icon">
         <img
           className="logo"
-          src="../../../../../public/logo/logo_tdt.png"
+          src="https://res.cloudinary.com/dqgiva2nz/image/upload/v1701493700/logo_tdt_miwt6u.png"
           alt="TDT"
         />
         <h1 className="logo-title">TDT</h1>
