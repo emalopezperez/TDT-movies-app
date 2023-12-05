@@ -71,7 +71,7 @@ const Search = () => {
     getMovies();
     setSpinner(true);
 
-    window.scrollTo(0, 0);
+    window.scrollTo(0, -20);
   }, [query, page]);
 
   useEffect(() => {

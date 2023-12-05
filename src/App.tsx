@@ -10,7 +10,7 @@ import Register from "./pages/auth/rigister/Register";
 import Profile from "./pages/profile/Profile";
 import Movies from "./pages/category/movies/Movies";
 import AuthGuards from "./guards/authGuards";
-
+import Series from "./pages/category/series/Series";
 import { Suspense } from "react";
 
 function App() {
@@ -23,6 +23,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/detail-movie/:id" element={<DetailMovie />} />
               <Route path="/category/movies" element={<Movies />} />
+              <Route path="/category/series" element={<Series />} />
               <Route path="/user-profile" element={<Profile />} />
               <Route path="/search/:query" element={<Search />} />
             </Route>

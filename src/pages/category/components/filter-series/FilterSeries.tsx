@@ -1,27 +1,27 @@
-import "./filter.scss";
+import "../filter.scss";
 import { useEffect } from "react";
 import { Movie } from "../../../../models/types";
 
 interface Props {
-  listMovies: Movie[];
-  setFiltered: (listMovies: Movie[]) => void;
+  listSeries: Movie[];
+  setFiltered: (listSeries: Movie[]) => void;
   genre: number;
   setGenre: (genre: number) => void;
 }
 
-const Filter: React.FC<Props> = ({
-  listMovies,
+const FilterSeries: React.FC<Props> = ({
+  listSeries,
   setFiltered,
   genre,
   setGenre,
 }) => {
   useEffect(() => {
     if (genre === 0) {
-      setFiltered(listMovies);
+      setFiltered(listSeries);
       return;
     }
 
-    const filter = listMovies.filter(({ genre_ids }) =>
+    const filter = listSeries.filter(({ genre_ids }) =>
       genre_ids?.includes(genre)
     );
 
@@ -41,9 +41,9 @@ const Filter: React.FC<Props> = ({
         <button
           className={genre === 12 ? "active-filter" : ""}
           onClick={() => {
-            setGenre(12);
+            setGenre(35);
           }}>
-          Adventure
+          Comedia
         </button>
         <button
           className={genre === 18 ? "active-filter" : ""}
@@ -55,13 +55,13 @@ const Filter: React.FC<Props> = ({
         <button
           className={genre === 28 ? "active-filter" : ""}
           onClick={() => {
-            setGenre(28);
+            setGenre(99);
           }}>
-          Accion
+          Documentales
         </button>
       </div>
     </nav>
   );
 };
 
-export default Filter;
+export default FilterSeries;

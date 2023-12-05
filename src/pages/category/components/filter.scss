@@ -1,0 +1,30 @@
+.container-filter {
+  height: 120px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .filters {
+    height: 10px;
+    width: 100%;
+    max-width: 1366px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+
+    button {
+      border: solid 1px white;
+      padding: 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      background-color: black;
+      color: white;
+    }
+
+    .active-filter {
+      background-color: #66cccc;
+      color: white;
+    }
+  }
+}
