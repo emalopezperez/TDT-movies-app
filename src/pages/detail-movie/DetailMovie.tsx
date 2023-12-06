@@ -3,10 +3,24 @@ import { useParams } from "react-router-dom";
 import { FetchData } from "../../services/fetchData";
 import "./detailMovie.scss";
 import Nav from "../../components/nav/Nav";
-import Detail from "../../components/detailMovie/Detail";
+import Detail from "./components/detailMovie/Detail";
 import Spinner from "../../components/spinner/Spinner";
-import { Fetch, Movie } from "../../models/types";
+import { Fetch } from "../../models/types";
 import { motion } from "framer-motion";
+import { DetailMovies } from "../../models/detail-movies";
+
+const initialDetailMovieState: DetailMovies = {
+  backdrop_path: "",
+  genres: [],
+  spoken_languages: [],
+  id: 0,
+  overview: "",
+  popularity: 0,
+  poster_path: "",
+  original_title: "",
+  release_date: "",
+  runtime: 0,
+};
 
 const DetailMovie = () => {
   const { id } = useParams();
@@ -14,16 +28,11 @@ const DetailMovie = () => {
   const API_URL = `${import.meta.env.VITE_BASE_URL}movie/
     ${id}?api_key=${import.meta.env.VITE_API_KEY}`;
 
-  const [movie, setMovie] = useState<Movie>(() => ({
-    id: 0,
-    overview: "",
-    poster_path: "",
-    title: "",
-  }));
+  const [movie, setMovie] = useState<DetailMovies>(initialDetailMovieState);
 
   const [spinner, setSpinner] = useState(true);
 
-  const handleSuccess = (response: Movie) => {
+  const handleSuccess = (response: DetailMovies) => {
     setMovie(response);
   };
 
@@ -34,7 +43,7 @@ const DetailMovie = () => {
   const handleAlways = () => {
     setTimeout(() => {
       setSpinner(false);
-    }, 40);
+    }, 100);
   };
 
   const getMovie = () => {
@@ -50,10 +59,6 @@ const DetailMovie = () => {
 
   useEffect(() => {
     getMovie();
-  }, []);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
   }, []);
 
   return (

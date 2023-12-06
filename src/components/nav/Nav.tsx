@@ -5,7 +5,6 @@ import Menu from "./components/menu/Menu";
 import Search from "./components/search/Search";
 import Profile from "./components/profile/Profile";
 import SidebarMenu from "./components/sidebarMenu/SidebarMenu";
-import Notification from "./components/notification/Notification";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const Nav = () => {
@@ -41,10 +40,7 @@ const Nav = () => {
         </div>
         <Search />
 
-        <div className="container-profile">
-          <Profile />
-          <Notification />
-        </div>
+        <Profile />
       </nav>
 
       <nav className="container-mobile">

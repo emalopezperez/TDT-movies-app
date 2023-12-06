@@ -1,56 +1,18 @@
 import "./cardMovie.scss";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addFavorite, removeFavorite } from "../../redux/states/favorites";
 import { Link } from "react-router-dom";
 import { Movie } from "../../models/types";
 import { imgDefault } from "../../consts/imageDefault";
 import { paragraphDefault } from "../../consts/paragraphDefault";
 import { motion } from "framer-motion";
-import { AppStore } from "../../redux/store";
-import store from "../../redux/store";
+
+import ButtonsFavorite from "../buttons-favorite/ButtonsFavorite";
 
 interface CardMovieProps {
   movie: Movie;
 }
 
-export type AppDispatch = typeof store.dispatch;
-
 const CardMovie: React.FC<CardMovieProps> = ({ movie }) => {
-  const dispatch = useDispatch<AppDispatch>();
-
   const { poster_path, title, overview, id } = movie;
-
-  const [localIsFavorite, setLocalIsFavorite] = useState(false);
-
-  const isFavorite = useSelector((store: AppStore) =>
-    store.favorites.favoritesMovies.some((favMovie) => favMovie.id === id)
-  );
-
-  useEffect(() => {
-    setLocalIsFavorite(isFavorite);
-  }, [isFavorite]);
-
-  const handleAddFavorite = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-
-    const movie = {
-      id: id,
-      titulo: title,
-      descripcion: overview,
-      imagen: poster_path,
-    };
-
-    dispatch(addFavorite(movie));
-    setLocalIsFavorite(!localIsFavorite);
-  };
-
-  const handleRemoveFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    dispatch(removeFavorite(id));
-    setLocalIsFavorite(!localIsFavorite);
-  };
-
   return (
     <Link to={`/detail-movie/${id}`} className="card ">
       <motion.div
@@ -78,17 +40,7 @@ const CardMovie: React.FC<CardMovieProps> = ({ movie }) => {
           <div>
             <p>{overview !== "" ? overview : paragraphDefault}</p>
 
-            {localIsFavorite ? (
-              <button
-                onClick={(e) => handleRemoveFavorite(e)}
-                className="button-like">
-                -
-              </button>
-            ) : (
-              <button onClick={handleAddFavorite} className="button-like">
-                +
-              </button>
-            )}
+            <ButtonsFavorite movie={movie} />
           </div>
         </div>
       </motion.div>

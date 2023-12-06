@@ -1,16 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { AppStore } from "../../../../redux/store";
+
 import "./profile.scss";
 import ModaleProfile from "./components/modalProfile/ModaleProfile";
 
 const Profile = () => {
   const [openModal, setOpenModal] = useState(true);
+  const [notify, setNotify] = useState(false);
+
+  const favoritesQuantity = useSelector(
+    (store: AppStore) => store.favorites.favoritesQuantity
+  );
 
   const toggleModal = () => {
     setOpenModal(!openModal);
   };
 
+  useEffect(() => {
+    if (favoritesQuantity) {
+      setNotify(true);
+    } else {
+      setNotify(false);
+    }
+  }, [favoritesQuantity]);
+
   return (
-    <div className="container-profile">
+    <div className={notify ? "notify" : "container-button"}>
       <button onClick={toggleModal} className="button-profile">
         <img
           className=""

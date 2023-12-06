@@ -90,22 +90,6 @@ $_bg-btn: #66cccc;
         font-size: 14px;
         @include cut(3);
       }
-
-      .button-like {
-        margin-top: 40px;
-        width: 32px;
-        height: 32px;
-        padding: 10px;
-        border-radius: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        border: solid 1px white;
-        background-color: $_bg-btn;
-        color: white;
-        font-size: 18px;
-      }
     }
   }
 }

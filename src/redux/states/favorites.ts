@@ -32,8 +32,6 @@ export const addFavorite = createAsyncThunk(
     });
     const data = await response.json();
 
-    console.log(data);
-
     return data;
   }
 );
@@ -57,10 +55,7 @@ export const removeFavorite = createAsyncThunk(
       },
       body: JSON.stringify({ movieId }),
     });
-    const data = await response.json();
-
-    console.log(data);
-
+    const data = await response.json()
     return data;
   }
 );

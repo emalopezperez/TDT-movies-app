@@ -30,7 +30,7 @@ const Profile = () => {
     <>
       <Nav />
       {favorites.length <= 0 ? (
-        <Menssage menssage="Usted no tiene favoritos" />
+        <Menssage menssage="No tiene peliculas guardadas" />
       ) : (
         <main className="profile-container">
           <div className="list-card">

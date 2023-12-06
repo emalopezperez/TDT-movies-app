@@ -22,6 +22,7 @@ export const FetchData = {
       const responseData = await response.json();
 
       success?.(responseData);
+
     } catch (err) {
       error && console.error("Network error or other error:", err);
 
