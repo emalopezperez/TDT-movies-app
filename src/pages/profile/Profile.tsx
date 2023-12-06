@@ -1,15 +1,16 @@
 import "./profile.scss";
+import { useEffect } from "react";
 import Nav from "../../components/nav/Nav";
+import Card from "./components/card/Card";
 import { useSelector, useDispatch } from "react-redux";
-import { AppStore } from "../../redux/store";
-import { useEffect, useState } from "react";
-import { getTotalFavorites } from "../../redux/states/favorites";
 import store from "../../redux/store";
+import { AppStore } from "../../redux/store";
+import { getTotalFavorites } from "../../redux/states/favorites";
+import Menssage from "../../utilities/menssage/Menssage";
 
 type AppDispatch = typeof store.dispatch;
 
 const Profile = () => {
-  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch<AppDispatch>();
 
   const favorites = useSelector(
@@ -18,33 +19,27 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        dispatch(getTotalFavorites());
-      } finally {
-        setLoading(false);
-      }
+      await dispatch(getTotalFavorites());
     };
 
     fetchData();
-  }, [dispatch]);
+    window.scrollTo(0, -20);
+  }, [favorites]);
 
   return (
     <>
       <Nav />
-      <main className="profile-container">
-        {loading ? (
-          <p>Cargando...</p>
-        ) : (
-          <ul>
+      {favorites.length <= 0 ? (
+        <Menssage menssage="Usted no tiene favoritos" />
+      ) : (
+        <main className="profile-container">
+          <div className="list-card">
             {favorites.map((movie) => (
-              <li key={movie.id}>
-                {movie.titulo}
-                {movie.imagen}
-              </li>
+              <Card data={movie} key={movie.id} />
             ))}
-          </ul>
-        )}
-      </main>
+          </div>
+        </main>
+      )}
     </>
   );
 };

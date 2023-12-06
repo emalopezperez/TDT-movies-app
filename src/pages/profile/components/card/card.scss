@@ -1,0 +1,115 @@
+@import "../../../../../src/scss//tools/cut-paragraph";
+$_text-color: white;
+$_text-size: 16px;
+$_background-gradien: linear-gradient(to top, rgb(10, 10, 10), transparent);
+$_background-gradien-hover: linear-gradient(
+  to right,
+  rgb(128, 127, 127),
+  transparent
+);
+$_bg-btn: #66cccc;
+
+.card {
+  height: 100%;
+  width: 100%;
+  max-width: 244px;
+  max-height: 307px;
+  position: relative;
+  border-radius: 25px;
+
+  .absolute {
+    height: 99%;
+    width: 99%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 25px;
+  }
+
+  img {
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+    filter: brightness(1);
+  }
+
+  .card-filter {
+    background: $_background-gradien;
+    transition: transform 0.3s ease-in-out;
+  }
+  .card-filter:hover {
+  }
+
+  .span-number {
+    width: 44px;
+    height: 42px;
+    position: absolute;
+    top: 25px;
+    left: 183px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #66ccccc2;
+    border-radius: 7px;
+
+    span {
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 37.72px;
+    }
+  }
+
+  .card-info {
+    z-index: 10;
+    position: absolute;
+    bottom: 2%;
+    left: 16px;
+    right: 16px;
+    font-size: $_text-size;
+    color: $_text-color;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    h3 {
+      font-weight: 700;
+      line-height: 25.14px;
+      text-wrap: balance;
+      @include cut(1);
+    }
+
+    div {
+      height: 100%;
+      display: flex;
+      gap: 10px;
+
+      p {
+        font-size: 14px;
+        @include cut(3);
+      }
+
+      .button-like {
+        margin-top: 40px;
+        width: 32px;
+        height: 32px;
+        padding: 10px;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border: solid 1px white;
+        background-color: $_bg-btn;
+        color: white;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+.bg-white {
+  background-color: white;
+}

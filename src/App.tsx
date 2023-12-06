@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import store from "./redux/store";
 import { getTotalFavorites } from "./redux/states/favorites";
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/auth/login/Login";
@@ -13,7 +14,6 @@ import Movies from "./pages/category/movies/Movies";
 import AuthGuards from "./guards/authGuards";
 import Series from "./pages/category/series/Series";
 import { Suspense } from "react";
-import store from "./redux/store";
 
 function App() {
   type AppDispatch = typeof store.dispatch;

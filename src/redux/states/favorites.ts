@@ -20,8 +20,6 @@ export interface FavoritesState {
   favoritesQuantity: number;
 }
 
-
-
 export const addFavorite = createAsyncThunk(
   'favorites/addFavorite',
   async (movie: FavoriteMovies ) => {
