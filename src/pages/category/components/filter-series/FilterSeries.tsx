@@ -39,7 +39,7 @@ const FilterSeries: React.FC<Props> = ({
           All
         </button>
         <button
-          className={genre === 12 ? "active-filter" : ""}
+          className={genre === 35 ? "active-filter" : ""}
           onClick={() => {
             setGenre(35);
           }}>
@@ -53,7 +53,7 @@ const FilterSeries: React.FC<Props> = ({
           Drama
         </button>
         <button
-          className={genre === 28 ? "active-filter" : ""}
+          className={genre === 99 ? "active-filter" : ""}
           onClick={() => {
             setGenre(99);
           }}>

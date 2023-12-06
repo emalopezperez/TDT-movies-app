@@ -29,7 +29,7 @@ const SliderMovies: React.FC<Props> = ({ title, endpoint }) => {
   const handleSuccess = (response: ApiResponse) => {
     const { results } = response;
 
-    setMovies(results.slice(1, 20));
+    setMovies(results.slice(1, 10));
   };
 
   const handleError = (error: string): void => {

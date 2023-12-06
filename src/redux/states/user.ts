@@ -9,7 +9,6 @@ export const InitialState = {
   info: {
     id: 0,
     name: "",
-    lastName: "",
     email: ""
   },
   token: ""
@@ -23,9 +22,17 @@ export const userSlice = createSlice({
     createUser: (state, action) => {
       const { usuario, token } = action.payload;
 
-      state.info = usuario;
+
+      const mappedUsuario = {
+        id: usuario._id,
+        name: usuario.nombre,
+        email: usuario.email
+      };
+
+      localStorage.setItem('userState', JSON.stringify({ info: mappedUsuario, token }));
+
+      state.info = mappedUsuario;
       state.token = token;
-      localStorage.setItem('userState', JSON.stringify(state));
     },
 
     logout: (state) => {

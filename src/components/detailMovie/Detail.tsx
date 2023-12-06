@@ -1,6 +1,7 @@
 import "./detail.scss";
 import { Movie } from "../../models/types";
 import { imgDefault } from "../../consts/imageDefault";
+import { paragraphDefault } from "../../consts/paragraphDefault";
 
 interface Props {
   data: Movie;
@@ -22,7 +23,7 @@ const Detail: React.FC<Props> = ({ data }) => {
       <div className="info">
         <h3>{title}</h3>
         <span>categori</span>
-        <p>{overview}</p>
+        <p>{overview !== "" ? overview : paragraphDefault}</p>
       </div>
     </article>
   );

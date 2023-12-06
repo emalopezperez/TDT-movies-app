@@ -2,7 +2,6 @@ export interface User{
   info:{
     id:number
     name: string,
-    lastName: string,
     email:string
   }
 
@@ -15,3 +14,4 @@ export interface ApiResponse {
   status: number;
   message: string;
 }
+
