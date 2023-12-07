@@ -47,7 +47,6 @@ const ListCast: React.FC<Props> = ({ id }) => {
     getCasts();
   }, [id]);
 
-  console.log(casts);
   return (
     <main className="container-casts">
       <h3 className="title-movies">Elenco</h3>

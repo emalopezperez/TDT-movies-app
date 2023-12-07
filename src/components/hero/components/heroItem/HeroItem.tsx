@@ -10,7 +10,9 @@ interface Props {
 const HeroItem: React.FC<Props> = ({ data }) => {
   const navigate = useNavigate();
 
-  const { poster_path, title, overview, id } = data;
+  console.log(data);
+
+  const { poster_path, title, overview, id, backdrop_path } = data;
 
   const handleDetailClick = () => {
     navigate(`/detail-movie/${id}`);
@@ -18,7 +20,10 @@ const HeroItem: React.FC<Props> = ({ data }) => {
 
   return (
     <section className="container-hero">
-      <img src={`${import.meta.env.VITE_PATH_IMG}${poster_path}`} alt={title} />
+      <img
+        src={`${import.meta.env.VITE_PATH_IMG}${backdrop_path}`}
+        alt={title}
+      />
       <div className="filter-image"></div>
       <div className="container-info">
         <div className="absolute">
@@ -38,6 +43,12 @@ const HeroItem: React.FC<Props> = ({ data }) => {
               <button className="button watch-later-button">Watch Later</button>
             </div>
           </motion.div>
+          <div className="card-hero">
+            <img
+              src={`${import.meta.env.VITE_PATH_IMG}${poster_path}`}
+              alt={title}
+            />
+          </div>
         </div>
       </div>
     </section>

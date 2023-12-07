@@ -43,7 +43,7 @@ const DetailMovie = () => {
   const handleAlways = () => {
     setTimeout(() => {
       setSpinner(false);
-    }, 110);
+    }, 120);
   };
 
   const getMovie = () => {

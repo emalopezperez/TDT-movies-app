@@ -7,11 +7,9 @@ import HeroItem from "./components/heroItem/HeroItem";
 import { FetchData } from "../../services/fetchData";
 import Spinner from "../spinner/Spinner";
 
-const API_URL = `${import.meta.env.VITE_BASE_URL}${
-  import.meta.env.VITE_ENDPOINT_POPULAR
-}api_key=${import.meta.env.VITE_API_KEY}${
-  import.meta.env.VITE_LANGUAGE
-}&page=1`;
+const API_URL = `${import.meta.env.VITE_BASE_URL}discover/movie?api_key=${
+  import.meta.env.VITE_API_KEY
+}${import.meta.env.VITE_LANGUAGE}&page=1`;
 
 type ListMovies = Movie[];
 
