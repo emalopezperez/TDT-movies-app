@@ -1,8 +1,10 @@
+@import "../../../../scss/settings/layout";
+
 .container-menu {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 8px;
+  gap: 20px;
 
   li {
     margin-right: 20px;
@@ -35,6 +37,20 @@
 
     &:hover a {
       color: #66cccc;
+    }
+  }
+}
+@media only screen and (max-width: $small-screen) {
+  .container-menu {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: start;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+
+    li {
+      align-self: flex-start;
     }
   }
 }
