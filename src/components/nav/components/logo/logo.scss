@@ -1,4 +1,5 @@
-.container-icon{
+@import "../../../../../src/scss/settings/layout";
+.container-icon {
   display: flex;
   gap: 3px;
   align-items: center;
@@ -10,10 +11,20 @@
   height: 28px;
 }
 
-.logo-title{
+.logo-title {
   font-size: 19px;
   font-weight: bold;
 }
 
-@media only screen and (max-width: 479px) {
+@media only screen and (max-width: $small-screen) {
+  .container-icon {
+    gap: 5px;
+    .logo-title {
+      font-size: 13px;
+    }
+    .logo {
+      width: 20px;
+      height: 20px;
+    }
+  }
 }

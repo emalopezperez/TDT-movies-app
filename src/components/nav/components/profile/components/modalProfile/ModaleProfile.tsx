@@ -10,9 +10,6 @@ interface Props {
 
 const ModalProfile: React.FC<Props> = ({ setOpenModal }) => {
   const userInfo = useSelector((store: AppStore) => store.user.info);
-  const favoritesQuantity = useSelector(
-    (store: AppStore) => store.favorites.favoritesQuantity
-  );
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -24,8 +21,7 @@ const ModalProfile: React.FC<Props> = ({ setOpenModal }) => {
   };
 
   return (
-    <div className="">
-      <p>{favoritesQuantity}</p>
+    <div className="modal">
       <h4>{userInfo.email}</h4>
       <Link to="/user-profile"> Mi perfil</Link>
 

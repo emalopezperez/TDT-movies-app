@@ -1,3 +1,5 @@
+@import "../../scss/settings/layout";
+
 .spinner {
   position: fixed;
   top: 50%;
@@ -45,5 +47,11 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: $small-screen) {
+  .spinner {
+    top: 30%;
   }
 }

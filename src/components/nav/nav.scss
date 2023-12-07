@@ -60,10 +60,15 @@ $_text-color: white;
   background: $_bg-scrolled;
 }
 
+.container-mobile.visible {
+  display: flex;
+}
+
 @media only screen and (max-width: $small-screen) {
   .container-mobile {
+    display: flex;
     padding: 0 5px;
-    gap: 10px;
+    gap: 8px;
   }
   .icon-menu {
     width: 36px;

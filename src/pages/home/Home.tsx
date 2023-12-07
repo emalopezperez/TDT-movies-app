@@ -17,8 +17,6 @@ const Home = () => {
         <SliderMovies title="Comedia" endpoint="movie/upcoming?" />
         <SliderMovies title="lo más valorados" endpoint="movie/top_rated?" />
         <SliderMovies title="Tendencias " endpoint="trending/all/day?" />
-        <SliderMovies title="Series" endpoint="tv/popular?" />
-        <SliderMovies title="Programas de tv" endpoint="trending/tv/day?" />
       </main>
     </>
   );

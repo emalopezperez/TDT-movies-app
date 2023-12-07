@@ -8,9 +8,9 @@
   .list-card {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     max-width: 1366px;
     width: 100%;
     row-gap: 30px;
+    column-gap: 30px;
   }
 }

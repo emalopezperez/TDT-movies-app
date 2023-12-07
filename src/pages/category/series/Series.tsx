@@ -25,7 +25,6 @@ const Series = () => {
   }${import.meta.env.VITE_LANGUAGE}&page=2`;
 
   const handleSuccess = (response: ApiResponse) => {
-    console.log(response);
     const { results } = response;
 
     setListSeries(results);
