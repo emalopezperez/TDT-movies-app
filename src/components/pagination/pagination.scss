@@ -1,6 +1,6 @@
+@import "../../scss//settings/layout";
+
 .pagination {
-  margin-top: 640px;
-  height: 100px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -16,5 +16,11 @@
 
   span {
     color: white;
+  }
+}
+
+@media only screen and (max-width: $small-screen) {
+  .pagination {
+    display: none;
   }
 }

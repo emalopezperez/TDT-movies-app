@@ -37,7 +37,7 @@ const Search = () => {
 
     setTotalPages(response.total_pages);
 
-    setListMovies(results);
+    setListMovies(results.slice(1, 11));
   };
 
   const handleError = (error: string): void => {
@@ -85,21 +85,18 @@ const Search = () => {
       {listMovies.length == 0 ? (
         <Menssage menssage={`No esta disponible`} />
       ) : (
-        <div className="list-movies-search">
-          <motion.div
-            animate={{ y: 40 }}
-            transition={{ ease: "easeOut", duration: 0.8 }}
-            className="list-movies">
-            <ListMovies data={listMovies} />
-          </motion.div>
-        </div>
+        <motion.div
+          animate={{ y: 40 }}
+          transition={{ ease: "easeOut", duration: 0.8 }}
+          className="list-movies-search">
+          <ListMovies data={listMovies} />
+          <Pagination
+            handlePageChange={handlePageChange}
+            page={page}
+            totalPages={totalPages}
+          />
+        </motion.div>
       )}
-
-      <Pagination
-        handlePageChange={handlePageChange}
-        page={page}
-        totalPages={totalPages}
-      />
     </>
   );
 };

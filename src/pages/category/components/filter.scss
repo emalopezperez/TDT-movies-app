@@ -1,11 +1,13 @@
+@import "../../../scss/settings/layout";
+
 .container-filter {
   height: 90px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+
   .filters {
-    height: 10px;
     width: 100%;
     max-width: 1366px;
     display: flex;
@@ -25,6 +27,27 @@
     .active-filter {
       background-color: #66cccc;
       color: white;
+    }
+  }
+
+  @media only screen and (max-width: $small-screen) {
+    .filters {
+      padding: 0 5px 0 5px;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+
+      button {
+        border: solid 1px white;
+        padding: 7px;
+        border-radius: 6px;
+        cursor: pointer;
+        background-color: black;
+        color: white;
+      }
     }
   }
 }

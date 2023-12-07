@@ -9,11 +9,11 @@ interface Props {
 
 const ListMovies: React.FC<Props> = ({ data }) => {
   return (
-    <motion.div layout className="list-movies">
+    <div className="list-movies">
       {data.map((movie) => (
         <CardMovie movie={movie} key={movie.id} />
       ))}
-    </motion.div>
+    </div>
   );
 };
 

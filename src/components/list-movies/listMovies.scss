@@ -1,9 +1,20 @@
+@import "../../scss/settings/layout";
+
 .list-movies {
   max-width: 1366px;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   display: flex;
-  column-gap: 35px;
-  row-gap: 30px;
+  justify-content: space-between;
   flex-wrap: wrap;
+  row-gap: 30px;
+}
+
+@media only screen and (max-width: $small-screen) {
+  .list-movies {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    row-gap: 20px;
+  }
 }

@@ -1,9 +1,19 @@
+@import "../../scss/settings/layout";
+
 .list-movies-search {
   margin-top: 60px;
+  margin-bottom: 50px;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  gap: 30px;
   align-items: center;
-  justify-content: center;
+}
+
+@media only screen and (max-width: $small-screen) {
+  .list-movies-search {
+    height: 150vh;
+    gap: 20px;
+  }
 }

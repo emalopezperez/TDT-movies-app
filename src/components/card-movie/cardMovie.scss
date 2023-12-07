@@ -1,4 +1,5 @@
 @import "../../scss/tools/cut-paragraph";
+@import "../../scss//settings/layout";
 $_text-color: white;
 $_text-size: 16px;
 $_background-gradien: linear-gradient(to top, rgb(10, 10, 10), transparent);
@@ -12,6 +13,7 @@ $_bg-btn: #66cccc;
 .card {
   height: 100%;
   width: 100%;
+  min-width: 180px;
   max-width: 244px;
   max-height: 307px;
   position: relative;
@@ -96,4 +98,12 @@ $_bg-btn: #66cccc;
 
 .bg-white {
   background-color: white;
+}
+
+@media only screen and (max-width: $small-screen) {
+  .card {
+    height: 100%;
+    width: 100%;
+    border-radius: 25px;
+  }
 }
