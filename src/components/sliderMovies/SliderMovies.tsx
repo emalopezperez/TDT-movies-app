@@ -29,7 +29,11 @@ const SliderMovies: React.FC<Props> = ({ title, endpoint }) => {
   const handleSuccess = (response: ApiResponse) => {
     const { results } = response;
 
-    setMovies(results.slice(1, 10));
+    const filteredMovies = results
+      .slice(1, 13)
+      .filter((movie) => movie.backdrop_path && movie.title && movie.overview);
+
+    setMovies(filteredMovies);
   };
 
   const handleError = (error: string): void => {

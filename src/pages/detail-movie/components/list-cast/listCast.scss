@@ -1,0 +1,23 @@
+.container-casts {
+  position: absolute;
+  bottom: -50%;
+  margin: 20px 0 20px 0;
+  max-width: 1366px;
+  max-height: 307px;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+
+  .title-movies {
+    padding-bottom: 23px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+  }
+  .card-container {
+    max-width: 244px;
+    height: 307px;
+    width: 100%;
+    cursor: pointer;
+  }
+}

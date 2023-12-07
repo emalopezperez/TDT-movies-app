@@ -1,0 +1,41 @@
+.card-cast {
+  height: 100%;
+  width: 100%;
+  min-width: 180px;
+  max-width: 244px;
+  max-height: 307px;
+  position: relative;
+
+  .absolute-cast {
+    height: 99%;
+    width: 99%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+  .img-cast {
+    object-fit: cover;
+  }
+
+  .card-info {
+    z-index: 10;
+    position: absolute;
+    bottom: 2%;
+    left: 16px;
+    right: 16px;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    h3 {
+      font-weight: 700;
+      line-height: 25.14px;
+      text-wrap: balance;
+    }
+  }
+}

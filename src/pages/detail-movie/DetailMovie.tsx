@@ -6,8 +6,8 @@ import Nav from "../../components/nav/Nav";
 import Detail from "./components/detailMovie/Detail";
 import Spinner from "../../components/spinner/Spinner";
 import { Fetch } from "../../models/types";
-import { motion } from "framer-motion";
 import { DetailMovies } from "../../models/detail-movies";
+import ListCast from "./components/list-cast/ListCast";
 
 const initialDetailMovieState: DetailMovies = {
   backdrop_path: "",
@@ -43,7 +43,7 @@ const DetailMovie = () => {
   const handleAlways = () => {
     setTimeout(() => {
       setSpinner(false);
-    }, 100);
+    }, 110);
   };
 
   const getMovie = () => {
@@ -59,19 +59,17 @@ const DetailMovie = () => {
 
   useEffect(() => {
     getMovie();
+    window.scrollTo(0, 0);
   }, []);
 
   return (
     <>
       <Nav />
       <Spinner spinner={spinner} />
-      <motion.div
-        className="container-detail"
-        initial={{ x: -80 }}
-        animate={{ x: 0 }}
-        transition={{ ease: "easeOut", duration: 0.7 }}>
+      <div className="container-detail">
         <Detail data={movie} />
-      </motion.div>
+        <ListCast id={id} />
+      </div>
     </>
   );
 };
