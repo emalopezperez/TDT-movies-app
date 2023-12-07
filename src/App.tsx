@@ -27,14 +27,18 @@ function App() {
     <main>
       <Suspense fallback={<>cargando...</>}>
         <Routes>
-          <Route element={<AuthGuards />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/detail-movie/:id" element={<DetailMovie />} />
-            <Route path="/category/movies" element={<Movies />} />
-            <Route path="/category/series" element={<Series />} />
-            <Route path="/user-profile" element={<Profile />} />
-            <Route path="/search/:query" element={<Search />} />
-          </Route>
+          <Route
+            path="/"
+            element={<AuthGuards />}
+            children={[
+              <Route path="/" element={<Home />} />,
+              <Route path="/detail-movie/:id" element={<DetailMovie />} />,
+              <Route path="/category/movies" element={<Movies />} />,
+              <Route path="/category/series" element={<Series />} />,
+              <Route path="/user-profile" element={<Profile />} />,
+              <Route path="/search/:query" element={<Search />} />,
+            ]}
+          />
 
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/register" element={<Register />} />
