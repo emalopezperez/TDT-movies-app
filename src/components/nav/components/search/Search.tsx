@@ -41,7 +41,10 @@ const Search = () => {
         onKeyDown={handleKeyDown}
       />
       <button onClick={handleSearch} className="search-icon">
-        <MagnifyingGlassIcon className="icon" />
+        <MagnifyingGlassIcon
+          className="pointer-events-none inset-y-0 left-0 h-full w-4 text-white"
+          aria-hidden="true"
+        />
       </button>
     </div>
   );

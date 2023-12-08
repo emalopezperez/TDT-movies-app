@@ -22,7 +22,7 @@ const Series = () => {
 
   const API_URL = `${import.meta.env.VITE_BASE_URL}tv/popular?api_key=${
     import.meta.env.VITE_API_KEY
-  }${import.meta.env.VITE_LANGUAGE}&page=2`;
+  }${import.meta.env.VITE_LANGUAGE}&page=1`;
 
   const handleSuccess = (response: ApiResponse) => {
     const { results } = response;

@@ -21,9 +21,11 @@ const ModalProfile: React.FC<Props> = ({ setOpenModal }) => {
   };
 
   return (
-    <div className="modal">
+    <div className="modal bg-black/80">
       <h4>{userInfo.email}</h4>
-      <Link to="/user-profile"> Mi perfil</Link>
+      <Link className="btn-profile" to="/user-profile">
+        Mi perfil
+      </Link>
 
       <button onClick={handleLogout} className="logout">
         Cerrar sesión

@@ -65,16 +65,24 @@ const Detail: React.FC<Props> = ({ data }) => {
         <section className="info">
           <header>
             <h3>{original_title}</h3>
+
             <ButtonsFavorite movie={data} />
           </header>
 
           <div className="genres">
             {genres.map(({ id, name }) => (
-              <span key={id}>{name}</span>
+              <button
+                key={id}
+                type="button"
+                className="rounded-full bg-trasparent text-white px-3 py-2 text-xs font-semibold 0 shadow-sm ring-1 ring-inset ring-gray-300 ">
+                {name}
+              </button>
             ))}
           </div>
 
-          <p>{overview !== "" ? overview : paragraphDefault}</p>
+          <p>
+            {overview !== "" ? overview : paragraphDefault} {paragraphDefault}
+          </p>
 
           <p>Lanzamiento: {release_date}</p>
           <p>Duracion: {formatTime(runtime)}</p>
@@ -82,7 +90,12 @@ const Detail: React.FC<Props> = ({ data }) => {
 
           <div className="language">
             {spoken_languages.map(({ name }) => (
-              <span key={name}>{name}</span>
+              <button
+                key={name}
+                type="button"
+                className="rounded-full bg-trasparent text-white px-3 py-2 text-xs font-semibold 0 shadow-sm ring-1 ring-inset ring-gray-300">
+                {name}
+              </button>
             ))}
           </div>
         </section>

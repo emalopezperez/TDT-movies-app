@@ -1,4 +1,5 @@
 @import "../../../../../src/scss/settings/layout";
+
 .container-icon {
   display: flex;
   gap: 3px;
@@ -14,6 +15,11 @@
 .logo-title {
   font-size: 19px;
   font-weight: bold;
+  transition: color 0.7s;
+}
+
+.logo-title:hover {
+  color: #66cccc;
 }
 
 @media only screen and (max-width: $small-screen) {

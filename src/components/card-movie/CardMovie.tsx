@@ -40,7 +40,9 @@ const CardMovie: React.FC<CardMovieProps> = ({ movie }) => {
           <div>
             <p>{overview !== "" ? overview : paragraphDefault}</p>
 
-            <ButtonsFavorite movie={movie} />
+            <div className="btn-fav">
+              <ButtonsFavorite movie={movie} />
+            </div>
           </div>
         </div>
       </motion.div>

@@ -16,7 +16,11 @@ $_text-color: white;
   align-items: center;
   background: $_bg-transparent;
   color: $_text-color;
-  transition: background 0.5s;
+  transition: background 0.9s;
+
+  &.scrolled {
+    background: $_bg-scrolled;
+  }
 
   &-nav {
     width: 100%;
@@ -53,10 +57,6 @@ $_text-color: white;
   justify-content: space-between;
   gap: 6px;
   align-items: center;
-}
-
-.scrolled {
-  background: $_bg-scrolled;
 }
 
 .sidebar-container {

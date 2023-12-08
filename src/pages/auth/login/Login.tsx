@@ -59,8 +59,6 @@ const Login: React.FC = () => {
   ];
 
   const handleSuccess = (response: ApiResponse) => {
-    setSpinner(true);
-
     dispatch(createUser(response));
     navigate("/");
   };
@@ -75,6 +73,8 @@ const Login: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    setSpinner(true);
 
     const fetchOptions: Fetch = {
       type: "POST",

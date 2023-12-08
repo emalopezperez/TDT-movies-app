@@ -5,6 +5,7 @@ import { FetchData } from "../../../services/fetchData";
 import FormInputs from "../../../components/form/formInputs/FormInputs";
 import { Fetch, Notify } from "../../../models/types";
 import Notification from "../../../utilities/notifications/Notifications";
+import Spinner from "../../../components/spinner/Spinner";
 
 interface Values {
   email: string;
@@ -16,6 +17,8 @@ const API_URL = "https://api-movies-tdt.vercel.app/api/auth/signup";
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
+
+  const [spinner, setSpinner] = useState(false);
 
   const [notify, setNotify] = useState<Notify>({
     menssage: "",
@@ -93,10 +96,13 @@ const Register: React.FC = () => {
     }, 1000);
   };
 
-  const handleAlways = () => {};
+  const handleAlways = () => {
+    setSpinner(false);
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSpinner(true);
 
     const fetchOptions: Fetch = {
       type: "POST",
@@ -111,8 +117,8 @@ const Register: React.FC = () => {
 
   return (
     <div className="container-form">
+      <Spinner spinner={spinner} />
       <Notification notify={notify} />
-
       <form onSubmit={handleSubmit}>
         <h4>Registrarse</h4>
         {inputs.map((input) => (

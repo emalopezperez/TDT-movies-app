@@ -9,7 +9,7 @@ const CardCast: React.FC<CardMovieProps> = ({ cast }) => {
   const { name, profile_path } = cast;
 
   return (
-    <div className="card-cast bg-white">
+    <div className="card-cast bg-white-cast">
       <img
         src={`${import.meta.env.VITE_PATH_IMG}${profile_path}`}
         alt={name}

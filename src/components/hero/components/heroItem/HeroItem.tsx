@@ -27,7 +27,7 @@ const HeroItem: React.FC<Props> = ({ data }) => {
         <div className="absolute">
           <motion.div
             className="info"
-            initial={{ x: -60 }}
+            initial={{ x: -120 }}
             animate={{ x: 0 }}
             transition={{ ease: "easeOut", duration: 0.8 }}>
             <h2>{title}</h2>
@@ -43,7 +43,7 @@ const HeroItem: React.FC<Props> = ({ data }) => {
           </motion.div>
 
           <motion.div
-            initial={{ x: 60 }}
+            initial={{ x: 120 }}
             animate={{ x: 0 }}
             transition={{ ease: "easeOut", duration: 0.8 }}
             className="card-hero">

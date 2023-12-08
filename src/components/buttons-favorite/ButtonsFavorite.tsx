@@ -9,6 +9,7 @@ import {
 import { AppStore } from "../../redux/store";
 import store from "../../redux/store";
 import { Movie } from "../../models/types";
+import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 type AppDispatch = typeof store.dispatch;
 
@@ -65,11 +66,21 @@ const ButtonsFavorite: React.FC<Props> = ({ movie }) => {
           className={
             localIsFavorite ? "button-likes button-liked" : "button-likes"
           }>
-          -
+          <span>
+            <MinusIcon
+              className="block h-5 w-5 text-white "
+              aria-hidden="true"
+            />
+          </span>
         </button>
       ) : (
         <button onClick={handleAddFavorite} className="button-likes">
-          +
+          <span className="">
+            <PlusIcon
+              className="block h-5 w-5 text-white "
+              aria-hidden="true"
+            />
+          </span>
         </button>
       )}
     </>

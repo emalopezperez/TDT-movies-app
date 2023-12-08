@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { imgDefault } from "../../../../consts/imageDefault";
 import { paragraphDefault } from "../../../../consts/paragraphDefault";
 import { motion } from "framer-motion";
+import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 export interface FavoriteMovies {
   id?: number;
@@ -77,10 +78,22 @@ const Card: React.FC<CardMovieProps> = ({ data }) => {
                 className={
                   localIsFavorite ? "button-likes button-liked" : "button-likes"
                 }>
-                -
+                <span>
+                  <MinusIcon
+                    className="block h-5 w-5 text-white "
+                    aria-hidden="true"
+                  />
+                </span>
               </button>
             ) : (
-              <button className="button-like">+</button>
+              <button className="button-likes">
+                <span className="">
+                  <PlusIcon
+                    className="block h-5 w-5 text-white "
+                    aria-hidden="true"
+                  />
+                </span>
+              </button>
             )}
           </div>
         </div>

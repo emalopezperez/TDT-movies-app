@@ -1,21 +1,24 @@
-$_bg-btn: #66cccc;
+$_bg-btn: trasparent;
 
 .button-likes {
-  margin-top: 40px;
-  width: 32px;
-  height: 32px;
-  padding: 15px;
+  width: 30px;
+  height: 30px;
+  padding: 16px;
   border-radius: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  border: solid 1px white;
-  background-color: $_bg-btn;
-  color: white;
-  font-size: 18px;
+  border: solid 1px #6b7280;
+  background: $_bg-btn;
+  transition: background-color 0.7s;
+}
+
+.button-likes:hover {
+  background-color: #66cccc;
 }
 
 .button-liked {
-  background: #14b8b8;
+  background: #66cccc;
+  border: solid 1px white;
 }

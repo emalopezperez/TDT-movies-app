@@ -91,27 +91,20 @@ $_bg-btn: #66cccc;
         @include cut(3);
       }
 
-      .button-like {
+      .button-likes {
         margin-top: 40px;
-        width: 32px;
-        height: 32px;
-        padding: 10px;
-        border-radius: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        border: solid 1px white;
-        background-color: $_bg-btn;
-        color: white;
-        font-size: 18px;
       }
     }
   }
 }
 
+.button-likes:hover {
+  background-color: #66cccc;
+}
+
 .button-liked {
-  background: #14b8b8;
+  background: #66cccc;
+  border: solid 1px white;
 }
 
 .bg-white {

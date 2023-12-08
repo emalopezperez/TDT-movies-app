@@ -30,12 +30,14 @@ $_shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
     box-shadow: $_shadow;
     cursor: pointer;
     color: white;
-    border: solid 1px white;
+    border: solid 1px;
+
+    transition: background-color 0.6s;
   }
 
   .search-icon:hover {
-    background-color: black;
-    transition: all 0.4s;
+    background: transparent;
+    border: solid 1px #6b7280;
   }
 
   .icon {

@@ -32,28 +32,39 @@ const FilterSeries: React.FC<Props> = ({
     <nav className="container-filter">
       <div className="filters">
         <button
-          className={genre === 0 ? "active-filter" : ""}
+          className={`rounded px-2 py-1 text-xs font-semibold text-gray-900 ${
+            genre === 0 ? "active-filter" : "bg-white text-gray-900"
+          } focus:outline-none focus:ring focus:border-blue-300`}
           onClick={() => {
             setGenre(0);
           }}>
           All
         </button>
+
         <button
-          className={genre === 35 ? "active-filter" : ""}
+          className={`rounded px-2 py-1 text-xs font-semibold text-gray-900 ${
+            genre === 35 ? " active-filter" : "bg-white text-gray-900"
+          }  `}
           onClick={() => {
             setGenre(35);
           }}>
           Comedia
         </button>
+
         <button
-          className={genre === 18 ? "active-filter" : ""}
+          className={`rounded px-2 py-1 text-xs font-semibold text-gray-900 ${
+            genre === 18 ? "active-filter" : "bg-white text-gray-900"
+          } focus:outline-none focus:ring focus:border-blue-300`}
           onClick={() => {
             setGenre(18);
           }}>
           Drama
         </button>
+
         <button
-          className={genre === 99 ? "active-filter" : ""}
+          className={`rounded px-2 py-1 text-xs font-semibold text-gray-900 ${
+            genre === 99 ? "active-filter" : "bg-white text-gray-900"
+          } focus:outline-none focus:ring focus:border-blue-300`}
           onClick={() => {
             setGenre(99);
           }}>

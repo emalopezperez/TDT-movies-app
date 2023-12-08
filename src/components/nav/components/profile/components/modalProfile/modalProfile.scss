@@ -1,38 +1,55 @@
-@import "../../../../../../scss/settings/layout";
-
 .container-modal {
   position: absolute;
   height: 160px;
-  width: 230px;
+  width: 240px;
   top: 53px;
   right: 95px;
 
-  .logout {
+  .modal {
     width: 100%;
-    background-color: rgb(101, 3, 3);
-    cursor: pointer;
-    padding: 8px;
-    color: white;
-    font-size: 14px;
+    height: 100%;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: solid 1px #d1d5db;
+    border-radius: 6px;
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
+
+    h4 {
+      color: #e5e7eb;
+      padding: 6px;
+      font-weight: 700;
+    }
+
+    .btn-profile {
+      border: solid 1px #6b7280;
+      padding: 1px 5px;
+      transition: border-color 0.4s, color 0.4s;
+      color: #6b7280;
+
+      &:hover {
+        border-color: white;
+        color: white;
+      }
+    }
+
+    .logout {
+      width: 100%;
+      background-color: rgb(169, 13, 13);
+      cursor: pointer;
+      padding: 5px;
+      color: white;
+      font-size: 14px;
+      transition: background-color 0.4s;
+
+      &:hover {
+        background-color: rgb(101, 8, 8);
+      }
+    }
   }
-}
 
-.container-modal.visible {
-  display: none;
-}
-
-.modal {
-  width: 100%;
-  height: 100%;
-  padding: 13px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: linear-gradient(to right, black, transparent);
-  border: solid 1px white;
-  border-radius: 6px;
-  box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
-}
-
-@media only screen and (max-width: $small-screen) {
+  &.visible {
+    display: none;
+  }
 }

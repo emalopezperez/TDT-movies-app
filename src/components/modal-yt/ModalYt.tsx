@@ -52,7 +52,7 @@ const ModalYt: React.FC<Props> = ({ id }) => {
 
   useEffect(() => {
     getVideo();
-  }, [id]);
+  }, []);
 
   const opts: YouTubeProps["opts"] = {
     height: 605,
