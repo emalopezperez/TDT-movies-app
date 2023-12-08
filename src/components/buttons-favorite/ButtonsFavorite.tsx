@@ -74,7 +74,9 @@ const ButtonsFavorite: React.FC<Props> = ({ movie }) => {
           </span>
         </button>
       ) : (
-        <button onClick={handleAddFavorite} className="button-likes">
+        <button
+          onClick={handleAddFavorite}
+          className="button-likes inset-0 bg-gray-500 bg-opacity-25 transition-opacity">
           <span className="">
             <PlusIcon
               className="block h-5 w-5 text-white "

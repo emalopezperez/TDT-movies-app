@@ -6,6 +6,8 @@ import { formatTime } from "../../../../utilities/formatTime/formatTime";
 import ButtonsFavorite from "../../../../components/buttons-favorite/ButtonsFavorite";
 import ModalYt from "../../../../components/modal-yt/ModalYt";
 import { PlayIcon } from "@heroicons/react/24/solid";
+import Stars from "../../../../utilities/stars/Stars";
+import { roundNumber } from "../../../../utilities/roundNumber/roundNumber";
 
 interface Props {
   data: DetailMovies;
@@ -23,6 +25,7 @@ const Detail: React.FC<Props> = ({ data }) => {
     release_date,
     runtime,
     backdrop_path,
+    vote_average,
   } = data;
 
   const [modalYt, setModalYt] = useState(false);
@@ -64,8 +67,7 @@ const Detail: React.FC<Props> = ({ data }) => {
 
         <section className="info">
           <header>
-            <h3>{original_title}</h3>
-
+            <h3 className="">{original_title}</h3>
             <ButtonsFavorite movie={data} />
           </header>
 
@@ -74,7 +76,7 @@ const Detail: React.FC<Props> = ({ data }) => {
               <button
                 key={id}
                 type="button"
-                className="rounded-full bg-trasparent text-white px-3 md:py-2 xl:p-2 p-[2px] text-xs font-semibold 0 shadow-sm ring-1 ring-inset ring-gray-300 ">
+                className="rounded-full bg-trasparent text-white px-3 md:py-2 xl:p-2 p-[2px] text-xs font-semibold 0 shadow-sm ring-1 ring-inset ring-gray-300 inset-0 bg-gray-500 bg-opacity-25 transition-opacity">
                 {name}
               </button>
             ))}
@@ -84,19 +86,29 @@ const Detail: React.FC<Props> = ({ data }) => {
             {overview !== "" ? overview : paragraphDefault} {paragraphDefault}
           </p>
 
-          <p>Lanzamiento: {release_date}</p>
-          <p>Duracion: {formatTime(runtime)}</p>
-          <p>Valoracion: {popularity}</p>
+          <div className="container-vote">
+            <p>Lanzamiento: {release_date}</p>
 
-          <div className="language">
-            {spoken_languages.map(({ name }) => (
-              <button
-                key={name}
-                type="button"
-                className="rounded-full bg-trasparent text-white px-3 py-2 text-xs font-semibold 0 shadow-sm ring-1 ring-inset ring-gray-300">
-                {name}
-              </button>
-            ))}
+            <div className="language">
+              {spoken_languages.map(({ name }) => (
+                <button
+                  key={name}
+                  type="button"
+                  className="rounded-full bg-trasparent text-white px-3 py-2 text-xs font-semibold 0 shadow-sm ring-1 ring-inset ring-gray-300 inset-0 bg-gray-500 bg-opacity-25 transition-opacity">
+                  {name}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <p>Duracion: {formatTime(runtime)}</p>
+
+          <div className="container-vote">
+            <p>Valoracion: {popularity}</p>
+            <div className="content-vote">
+              <Stars totalStars={5} />
+              {roundNumber(vote_average)}
+            </div>
           </div>
         </section>
       </article>

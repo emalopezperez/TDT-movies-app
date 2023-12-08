@@ -19,4 +19,5 @@ export interface DetailMovies {
   original_title: string;
   release_date: string;
   runtime:number;
+  vote_average:number;
 }

@@ -2,15 +2,16 @@ import "./heroItem.scss";
 import { Movie } from "../../../../models/types";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import Stars from "../../../../utilities/stars/Stars";
+import ButtonsFavorite from "../../../buttons-favorite/ButtonsFavorite";
 
 interface Props {
   data: Movie;
 }
 
 const HeroItem: React.FC<Props> = ({ data }) => {
-  const { poster_path, title, overview, id, backdrop_path } = data;
-
-  console.log(data);
+  const { poster_path, title, overview, id, backdrop_path, vote_average } =
+    data;
 
   const navigate = useNavigate();
 
@@ -33,12 +34,25 @@ const HeroItem: React.FC<Props> = ({ data }) => {
             animate={{ x: 0 }}
             transition={{ ease: "easeOut", duration: 0.8 }}>
             <h2>{title}</h2>
+            <div className="content-vote flex-between ">
+              <div className="content-vote">
+                <Stars totalStars={5} />
+                {vote_average}
+              </div>
+
+              <ButtonsFavorite movie={data} />
+            </div>
+
             <p>{overview}</p>
             <div>
-              <button className="button play-button">Play</button>
               <button
                 onClick={handleDetailClick}
-                className="button watch-later-button">
+                className="button play-button">
+                Play
+              </button>
+              <button
+                onClick={handleDetailClick}
+                className="button watch-later-button inset-0 bg-gray-500 bg-opacity-25 transition-opacity">
                 Ver estreno
               </button>
             </div>

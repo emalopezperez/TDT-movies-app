@@ -62,9 +62,9 @@ const FilterSeries: React.FC<Props> = ({
         </button>
 
         <button
-          className={`rounded px-2 py-1 text-xs font-semibold text-gray-900 ${
+          className={`rounded px-2 py-1 text-xs font-semibold text-gray-900  ${
             genre === 99 ? "active-filter" : "bg-white text-gray-900"
-          } focus:outline-none focus:ring focus:border-blue-300`}
+          } focus:outline-none focus:ring focus:border-blue-300 `}
           onClick={() => {
             setGenre(99);
           }}>

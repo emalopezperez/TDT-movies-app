@@ -24,7 +24,13 @@ const Hero = () => {
   const handleSuccess = (response: ApiResponse) => {
     const { results } = response;
 
-    setMovies(results.slice(1, 10));
+    const listMovies = results.slice(3, 8);
+
+    const moviesFiltered = listMovies.filter(
+      (movie) => movie.title !== "Reign of Chaos"
+    );
+
+    setMovies(moviesFiltered);
   };
 
   const handleError = (error: string): void => {

@@ -20,6 +20,7 @@ const initialDetailMovieState: DetailMovies = {
   original_title: "",
   release_date: "",
   runtime: 0,
+  vote_average: 0,
 };
 
 const DetailMovie = () => {

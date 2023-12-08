@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Movie } from "../../models/types";
 import { imgDefault } from "../../consts/imageDefault";
 import { paragraphDefault } from "../../consts/paragraphDefault";
+import { roundNumber } from "../../utilities/roundNumber/roundNumber";
 import { motion } from "framer-motion";
 
 import ButtonsFavorite from "../buttons-favorite/ButtonsFavorite";
@@ -12,7 +13,8 @@ interface CardMovieProps {
 }
 
 const CardMovie: React.FC<CardMovieProps> = ({ movie }) => {
-  const { poster_path, title, overview, id } = movie;
+  const { poster_path, title, overview, id, vote_average } = movie;
+
   return (
     <Link to={`/detail-movie/${id}`} className="card ">
       <motion.div
@@ -33,7 +35,7 @@ const CardMovie: React.FC<CardMovieProps> = ({ movie }) => {
         />
         <div className="card-filter absolute"></div>
         <div className="span-number">
-          <span>9.2</span>
+          <span>{roundNumber(vote_average)}</span>
         </div>
         <div className="card-info">
           <h3>{title}</h3>
