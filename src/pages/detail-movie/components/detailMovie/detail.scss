@@ -1,3 +1,5 @@
+@import "../../../../scss/settings/layout";
+
 .poster {
   width: 100%;
   height: 100%;
@@ -111,4 +113,71 @@
 .play-trailer:hover {
   background-color: rgb(211, 19, 19);
   color: white;
+}
+
+@media only screen and (max-width: $medium-screen) {
+  .detail {
+    top: 60px;
+    flex-direction: column;
+    padding: 0 10px 0 10px;
+    max-height: 100vh;
+    width: 100%;
+    height: 100vh;
+    gap: 30px;
+
+    .container-img {
+      max-height: 311px;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+
+      img {
+        width: 99%;
+        height: 99%;
+        object-fit: cover;
+      }
+    }
+
+    .info {
+      height: 611px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      header {
+        height: 80px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h3 {
+          font-weight: 600;
+          font-size: 24px;
+        }
+      }
+
+      .genres,
+      .language {
+        display: flex;
+        gap: 30px;
+
+        span {
+          padding: 1px 2px 1px 2px;
+          border-radius: 15px;
+          background-color: white;
+          color: black;
+        }
+      }
+
+      .language {
+        gap: 10px;
+      }
+    }
+  }
 }

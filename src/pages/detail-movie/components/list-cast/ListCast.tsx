@@ -49,7 +49,7 @@ const ListCast: React.FC<Props> = ({ id }) => {
 
   return (
     <main className="container-casts">
-      <h3 className="title-movies">Elenco</h3>
+      <h3 className="title-movies">Reparto principal</h3>
       <Swiper
         loop={true}
         slidesPerView={1}

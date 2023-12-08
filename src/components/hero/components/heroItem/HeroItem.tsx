@@ -10,6 +10,8 @@ interface Props {
 const HeroItem: React.FC<Props> = ({ data }) => {
   const { poster_path, title, overview, id, backdrop_path } = data;
 
+  console.log(data);
+
   const navigate = useNavigate();
 
   const handleDetailClick = () => {

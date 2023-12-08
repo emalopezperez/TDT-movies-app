@@ -59,7 +59,6 @@ const Register: React.FC = () => {
       placeholder: "Password",
       errorMessage: "Password should be 8-20",
       label: "Password",
-      pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
       required: true,
     },
   ];
@@ -129,11 +128,11 @@ const Register: React.FC = () => {
             onChange={onChange}
           />
         ))}
-        <button className="button-submit" type="submit">
+        <button className="button-submit hover:bg-gray-100" type="submit">
           Registrarse
         </button>
 
-        <Link to="/auth/login">
+        <Link className="text-white flex gap-5 mb-5" to="/auth/login">
           <span>Ya estas registrado ?</span>
           <button>Inisiar sesion</button>
         </Link>

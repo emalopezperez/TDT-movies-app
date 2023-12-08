@@ -8,6 +8,8 @@ import FormInputs from "../../../components/form/formInputs/FormInputs";
 import Spinner from "../../../components/spinner/Spinner";
 import { Fetch } from "../../../models/types";
 import { ApiResponse } from "../../../models/users";
+import Notification from "../../../utilities/notifications/Notifications";
+import { Notify } from "../../../models/types";
 
 const API_URL = "https://api-movies-tdt.vercel.app/api/auth/login";
 
@@ -20,6 +22,11 @@ const Login: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [notify, setNotify] = useState<Notify>({
+    menssage: "",
+    status: false,
+    success: true,
+  });
   const [spinner, setSpinner] = useState(false);
   const [values, setValues] = useState<Values>({
     email: "",
@@ -43,27 +50,27 @@ const Login: React.FC = () => {
       placeholder: "Password",
       errorMessage: "Password should be 8-20",
       label: "Password",
-      pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
-      required: true,
-    },
-    {
-      id: 5,
-      name: "confirmPassword",
-      type: "password",
-      placeholder: "Confirm Password",
-      errorMessage: "Las contraseñas no coinciden",
-      label: "Confirm Password",
-      pattern: values.password,
       required: true,
     },
   ];
 
   const handleSuccess = (response: ApiResponse) => {
     dispatch(createUser(response));
+
+    setNotify({
+      menssage: "Bienvenido",
+      status: true,
+      success: true,
+    });
     navigate("/");
   };
 
   const handleError = (error: string): void => {
+    setNotify({
+      menssage: "Error!!!",
+      status: true,
+      success: false,
+    });
     console.error(`Error fetching data: ${error}`);
   };
 
@@ -92,10 +99,13 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="container-form">
+    <div className="container-form ">
+      <Notification notify={notify} />
       <Spinner spinner={spinner} />
       <form onSubmit={handleSubmit}>
-        <h4>Inicias sesion</h4>
+        <header className="">
+          <h4 className="font-bold text-3xl">Iniciar sesión</h4>
+        </header>
         {inputs.map((input) => (
           <FormInputs
             key={input.id}
@@ -104,11 +114,11 @@ const Login: React.FC = () => {
             onChange={onChange}
           />
         ))}
-        <button className="button-submit" type="submit">
+        <button className="button-submit hover:bg-gray-100" type="submit">
           Iniciar sesion
         </button>
 
-        <Link to="/auth/register">
+        <Link className="text-white flex gap-5 mb-5" to="/auth/register">
           <span>Tienes cuenta ?</span>
           <button>Retgistrarse</button>
         </Link>

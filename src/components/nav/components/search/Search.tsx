@@ -33,16 +33,17 @@ const Search = () => {
       <input
         id="search"
         name="search"
-        className="search"
+        className="search inset-0 bg-gray-500 bg-opacity-25 transition-opacity shadow-2xl"
         placeholder="Buscar..."
         type="search"
         value={search}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
       />
-      <button onClick={handleSearch} className="search-icon">
+
+      <button onClick={handleSearch} className="search-icon ">
         <MagnifyingGlassIcon
-          className="pointer-events-none inset-y-0 left-0 h-full w-4 text-white"
+          className="pointer-events-none inset-y-0 left-0 h-full w-4 text-white "
           aria-hidden="true"
         />
       </button>

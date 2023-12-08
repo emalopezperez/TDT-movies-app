@@ -26,7 +26,9 @@ const DetailMovie = () => {
   const { id } = useParams();
 
   const API_URL = `${import.meta.env.VITE_BASE_URL}movie/
-    ${id}?api_key=${import.meta.env.VITE_API_KEY}`;
+    ${id}?api_key=${import.meta.env.VITE_API_KEY}${
+    import.meta.env.VITE_LANGUAGE
+  }`;
 
   const [movie, setMovie] = useState<DetailMovies>(initialDetailMovieState);
 

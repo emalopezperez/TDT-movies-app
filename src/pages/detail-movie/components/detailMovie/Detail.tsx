@@ -74,7 +74,7 @@ const Detail: React.FC<Props> = ({ data }) => {
               <button
                 key={id}
                 type="button"
-                className="rounded-full bg-trasparent text-white px-3 py-2 text-xs font-semibold 0 shadow-sm ring-1 ring-inset ring-gray-300 ">
+                className="rounded-full bg-trasparent text-white px-3 md:py-2 xl:p-2 p-[2px] text-xs font-semibold 0 shadow-sm ring-1 ring-inset ring-gray-300 ">
                 {name}
               </button>
             ))}

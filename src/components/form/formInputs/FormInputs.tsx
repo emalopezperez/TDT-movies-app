@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from "react";
+import { ChangeEvent } from "react";
 import "./formInputs.scss";
 
 interface FormInputsProps {
@@ -21,24 +21,10 @@ const FormInputs: React.FC<FormInputsProps> = ({
   id,
   ...inputProps
 }) => {
-  const [focused, setFocused] = useState(false);
-
-  const handleFocus = () => {
-    setFocused(true);
-    console.log(focused);
-  };
-
   return (
     <div className="formInput">
       <label>{label}</label>
-      <input
-        {...inputProps}
-        onChange={onChange}
-        onBlur={handleFocus}
-        onFocus={() =>
-          inputProps.name === "confirmPassword" && setFocused(true)
-        }
-      />
+      <input {...inputProps} onChange={onChange} />
       <span>{errorMessage}</span>
     </div>
   );

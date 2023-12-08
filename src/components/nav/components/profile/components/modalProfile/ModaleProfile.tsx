@@ -23,11 +23,13 @@ const ModalProfile: React.FC<Props> = ({ setOpenModal }) => {
   return (
     <div className="modal bg-black/80">
       <h4>{userInfo.email}</h4>
-      <Link className="btn-profile" to="/user-profile">
+      <Link
+        className="btn-profile inset-0 bg-gray-500 bg-opacity-25 transition-opacity shadow-2xl"
+        to="/user-profile">
         Mi perfil
       </Link>
 
-      <button onClick={handleLogout} className="logout">
+      <button onClick={handleLogout} className="logout ">
         Cerrar sesión
       </button>
     </div>
