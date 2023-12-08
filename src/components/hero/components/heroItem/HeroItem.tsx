@@ -8,11 +8,9 @@ interface Props {
 }
 
 const HeroItem: React.FC<Props> = ({ data }) => {
-  const navigate = useNavigate();
-
-  console.log(data);
-
   const { poster_path, title, overview, id, backdrop_path } = data;
+
+  const navigate = useNavigate();
 
   const handleDetailClick = () => {
     navigate(`/detail-movie/${id}`);
@@ -35,20 +33,25 @@ const HeroItem: React.FC<Props> = ({ data }) => {
             <h2>{title}</h2>
             <p>{overview}</p>
             <div>
+              <button className="button play-button">Play</button>
               <button
                 onClick={handleDetailClick}
-                className="button play-button">
-                Play
+                className="button watch-later-button">
+                Ver estreno
               </button>
-              <button className="button watch-later-button">Watch Later</button>
             </div>
           </motion.div>
-          <div className="card-hero">
+
+          <motion.div
+            initial={{ x: 60 }}
+            animate={{ x: 0 }}
+            transition={{ ease: "easeOut", duration: 0.8 }}
+            className="card-hero">
             <img
               src={`${import.meta.env.VITE_PATH_IMG}${poster_path}`}
               alt={title}
             />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -74,7 +74,9 @@ const Card: React.FC<CardMovieProps> = ({ data }) => {
             {localIsFavorite ? (
               <button
                 onClick={(e) => handleRemoveFavorite(e)}
-                className="button-like">
+                className={
+                  localIsFavorite ? "button-likes button-liked" : "button-likes"
+                }>
                 -
               </button>
             ) : (

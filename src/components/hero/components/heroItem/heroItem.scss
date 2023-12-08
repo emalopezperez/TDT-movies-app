@@ -48,6 +48,7 @@
         max-width: 400px;
         width: 100%;
         height: 100%;
+        position: relative;
         img {
           width: 100%;
           height: 100%;
@@ -77,32 +78,33 @@
           text-align: justify;
           @include cut(5);
         }
-
-        .button {
-          border: 1px solid #ccc;
-          cursor: pointer;
-          padding: 8px 10px;
-        }
-
-        .play-button {
-          background-color: #66cccc;
-          color: white;
-        }
-
-        .watch-later-button {
-          background-color: transparent;
-          color: #fff;
-          margin-left: 1em;
-        }
       }
     }
   }
 }
 
+.button {
+  border: 1px solid #ccc;
+  cursor: pointer;
+  padding: 8px 10px;
+}
+
+.play-button {
+  width: 80px;
+  background-color: #66cccc;
+  color: white;
+}
+
+.watch-later-button {
+  background-color: transparent;
+  color: #fff;
+  margin-left: 1em;
+}
+
 @media only screen and (max-width: $small-screen) {
   .container-hero {
     width: 100%;
-    height: 100%;
+    height: 390px;
     padding: 0 5px;
     img {
       width: 100%;
@@ -113,11 +115,13 @@
       position: absolute;
       top: 0%;
       width: 100%;
-      height: 230px;
       display: flex;
       justify-content: center;
 
       .absolute {
+        .card-hero {
+          display: none;
+        }
         .info {
           width: 100%;
           max-width: 230px;
@@ -140,6 +144,9 @@
 }
 
 @media only screen and (max-width: $medium-screen) {
+  .card-hero {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: $large-screen) {

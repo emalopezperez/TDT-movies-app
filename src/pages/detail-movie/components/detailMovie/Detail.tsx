@@ -1,8 +1,11 @@
+import { useState } from "react";
 import "./detail.scss";
 import { DetailMovies } from "../../../../models/detail-movies";
 import { paragraphDefault } from "../../../../consts/paragraphDefault";
 import { formatTime } from "../../../../utilities/formatTime/formatTime";
 import ButtonsFavorite from "../../../../components/buttons-favorite/ButtonsFavorite";
+import ModalYt from "../../../../components/modal-yt/ModalYt";
+import { PlayIcon } from "@heroicons/react/24/solid";
 
 interface Props {
   data: DetailMovies;
@@ -10,6 +13,7 @@ interface Props {
 
 const Detail: React.FC<Props> = ({ data }) => {
   const {
+    id,
     overview,
     poster_path,
     original_title,
@@ -20,6 +24,8 @@ const Detail: React.FC<Props> = ({ data }) => {
     runtime,
     backdrop_path,
   } = data;
+
+  const [modalYt, setModalYt] = useState(false);
 
   return (
     <>
@@ -33,14 +39,27 @@ const Detail: React.FC<Props> = ({ data }) => {
 
       <article className="detail">
         <div className="container-img">
-          <img
-            src={
-              backdrop_path !== null
-                ? `${import.meta.env.VITE_PATH_IMG}${poster_path}`
-                : `${import.meta.env.VITE_PATH_IMG}${backdrop_path}`
-            }
-            alt={original_title}
-          />
+          {modalYt ? (
+            <ModalYt id={id} />
+          ) : (
+            <>
+              <img
+                src={
+                  backdrop_path !== null
+                    ? `${import.meta.env.VITE_PATH_IMG}${poster_path}`
+                    : `${import.meta.env.VITE_PATH_IMG}${backdrop_path}`
+                }
+                alt={original_title}
+              />
+              <button className="button play-trailer ">
+                <PlayIcon
+                  onClick={() => {
+                    setModalYt(!modalYt);
+                  }}
+                />
+              </button>
+            </>
+          )}
         </div>
 
         <section className="info">

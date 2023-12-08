@@ -1,7 +1,11 @@
 import "./buttonsFavorite.scss";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addFavorite, removeFavorite } from "../../redux/states/favorites";
+import {
+  addFavorite,
+  removeFavorite,
+  getTotalFavorites,
+} from "../../redux/states/favorites";
 import { AppStore } from "../../redux/store";
 import store from "../../redux/store";
 import { Movie } from "../../models/types";
@@ -37,13 +41,19 @@ const ButtonsFavorite: React.FC<Props> = ({ movie }) => {
       imagen: poster_path,
     };
 
-    dispatch(addFavorite(movie));
+    dispatch(addFavorite(movie)).then(() => {
+      dispatch(getTotalFavorites());
+    });
+
     setLocalIsFavorite(!localIsFavorite);
   };
 
   const handleRemoveFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    dispatch(removeFavorite(id));
+    dispatch(removeFavorite(id)).then(() => {
+      dispatch(getTotalFavorites());
+    });
+
     setLocalIsFavorite(!localIsFavorite);
   };
 
@@ -52,11 +62,13 @@ const ButtonsFavorite: React.FC<Props> = ({ movie }) => {
       {localIsFavorite ? (
         <button
           onClick={(e) => handleRemoveFavorite(e)}
-          className="button-like">
+          className={
+            localIsFavorite ? "button-likes button-liked" : "button-likes"
+          }>
           -
         </button>
       ) : (
-        <button onClick={handleAddFavorite} className="button-like">
+        <button onClick={handleAddFavorite} className="button-likes">
           +
         </button>
       )}
