@@ -1,4 +1,4 @@
-![https://res.cloudinary.com/dqgiva2nz/image/upload/v1702079666/64shots_so_cv4f38.png]()
+![Portada](https://res.cloudinary.com/dqgiva2nz/image/upload/v1702079666/64shots_so_cv4f38.png)
 
 <<<<<<< HEAD
 # Aplicación de películas para la prueba final del bootcamp de la empresa TDT.
