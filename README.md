@@ -1,7 +1,7 @@
-![Portada](https://res.cloudinary.com/dqgiva2nz/image/upload/v1702079665/503shots_so_kf5klw.png)
-![Portada](https://res.cloudinary.com/dqgiva2nz/image/upload/v1702079666/64shots_so_cv4f38.png)
-![Portada](https://res.cloudinary.com/dqgiva2nz/image/upload/v1702079665/30shots_so_ytwuuy.png)
-![Portada](https://res.cloudinary.com/dqgiva2nz/image/upload/v1702079665/655shots_so_hyg5xb.png)
+![Portada](https://res.cloudinary.com/dqgiva2nz/image/upload/v1702080137/503shots_so_kf5klw.png)
+![Portada](https://res.cloudinary.com/dqgiva2nz/image/upload/v1702080137/503shots_so_kf5klw.png)
+![Portada](https://res.cloudinary.com/dqgiva2nz/image/upload/v1702080205/30shots_so_ytwuuy.png)
+![Portada](https://res.cloudinary.com/dqgiva2nz/image/upload/v1702080232/655shots_so_hyg5xb.png)
 
 
 # Aplicación de películas para la prueba final del bootcamp de la empresa TDT.
